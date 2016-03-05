@@ -21,8 +21,9 @@
                                 <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                                 <color key="backgroundColor" red="0.79607843137254897" green="0.16078431372549018" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="laH-ye-WBo"/>
-                                    <tabBarItem systemItem="more" id="MqB-Y8-rEO"/>
+                                    <tabBarItem title="Home" id="laH-ye-WBo"/>
+                                    <tabBarItem title="Hot Dishes" id="8aj-76-qCb"/>
+                                    <tabBarItem title="Me" id="MqB-Y8-rEO"/>
                                 </items>
                             </tabBar>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-4u-AeL">
