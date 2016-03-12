@@ -27,6 +27,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         shopIDs.append("1")
         shopIDs.append("17")
         shopIDs.append("18")
+        shopIDs.append("19")
+        shopIDs.append("20")
+        shopIDs.append("21")
+        shopIDs.append("22")
+        
         
         for shopID in shopIDs {
             getShopData("http://ec2-52-27-149-51.us-west-2.compute.amazonaws.com:8080/restaurants/query/?id=" + shopID)
