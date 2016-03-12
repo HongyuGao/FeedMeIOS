@@ -193,6 +193,7 @@
 				TargetAttributes = {
 					96CFC4F61C87FF2A0086F4EF = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 85TG5MLMY3;
 					};
 					96CFC50A1C87FF2A0086F4EF = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -397,10 +398,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FeedMeIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FeedMe.FeedMeIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -408,10 +412,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FeedMeIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FeedMe.FeedMeIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -482,6 +489,7 @@
 				96CFC5211C87FF2A0086F4EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96CFC5221C87FF2A0086F4EF /* Build configuration list for PBXNativeTarget "FeedMeIOSTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +498,7 @@
 				96CFC5241C87FF2A0086F4EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96CFC5251C87FF2A0086F4EF /* Build configuration list for PBXNativeTarget "FeedMeIOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +507,7 @@
 				96CFC5271C87FF2A0086F4EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

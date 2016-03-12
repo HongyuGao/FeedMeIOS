@@ -17,9 +17,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //标记图片是否已经被选中
     var isFlag = [Bool](count : 12, repeatedValue: false)
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let logo = UIImage(named: "LogoWhite.png")
+//        self.navigationItem.titleView = UIImageView(image: logo)
+        
+        let ngColor = UIColor(red: 203/255, green:41/225, blue: 10/255, alpha: 1)
+//        self.navigationController?.navigationBar.barTintColor = bgColor
+        UINavigationBar.appearance().barTintColor = ngColor
+        UITabBar.appearance().barTintColor = ngColor
+        
         
         // Retrieve the list of all online shops' IDs:
         var shopIDs = [String]()
