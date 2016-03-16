@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: Properties
     var restaurants = [String]()
     var logos = ["rest1", "rest2", "rest3", "rest4", "rest5", "rest6", "rest7"]
+    // test only.
     
     var tableView = UITableView()
     //标记图片是否已经被选中
