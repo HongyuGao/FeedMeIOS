@@ -12,17 +12,19 @@ class Restaurant {
     // MARK: Properties
     
     var name: String
-    var photo: UIImage?
-    var openTime: String?
+    var logo: UIImage?
+    var openTimeMorning: String?
+    var openTimeAfternoon: String?
     
     
     // MARK: Initialization
     
-    init?(name: String, photo: UIImage?, openTime: String?) {
+    init?(name: String, logo: UIImage?, openTimeMorning: String?, openTimeAfternoon: String?) {
         // Initialize stored properties.
         self.name = name
-        self.photo = photo
-        self.openTime = openTime
+        self.logo = logo
+        self.openTimeMorning = openTimeMorning
+        self.openTimeAfternoon = openTimeAfternoon
         
         // Initialization should fail if there is no name.
         if name.isEmpty {

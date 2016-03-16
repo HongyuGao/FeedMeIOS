@@ -67,8 +67,17 @@ class RestaurantTableViewController: UITableViewController {
             json = try NSJSONSerialization.JSONObjectWithData(shopData, options: .AllowFragments) as! Array<AnyObject>
             for index in 0...json.count-1 {
                 if let name = json[index]["name"] as? String {
+                    let logo = json[index]["logo"] as?UIImage
+                    // let logoString = json[index]["logo"] as?String
+//                    if logoString != nil {
+//                        let logo = loadImageFromURL(PICTURE_HOST + "img/logo/" + logoString!)
+//                    } else {
+//                        let logo = nil
+//                    }
+                    
                     let openTimeMorning = json[index]["openTimeMorning"] as?String
-                    let restaurant = Restaurant(name: name, photo: nil, openTime: openTimeMorning)!
+                    let openTimeAfternoon = json[index]["openTimeAfternoon"] as?String
+                    let restaurant = Restaurant(name: name, logo: logo, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
     
                     restaurants += [restaurant]
                 }
@@ -77,6 +86,10 @@ class RestaurantTableViewController: UITableViewController {
         } catch _ {
             
         }
+    }
+    
+    func loadImageFromURL(url: String) {
+        
     }
     
     func do_table_refresh()
@@ -103,7 +116,6 @@ class RestaurantTableViewController: UITableViewController {
         return restaurants.count
     }
 
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "RestaurantTableViewCell"
@@ -113,8 +125,13 @@ class RestaurantTableViewController: UITableViewController {
         let restaurant = restaurants[indexPath.row]
         
         cell.nameLabel.text = restaurant.name
-        cell.photoImageView.image = restaurant.photo
-        cell.timeLabel.text = restaurant.openTime
+        cell.photoImageView.image = restaurant.logo
+        
+        if restaurant.openTimeMorning != nil && restaurant.openTimeAfternoon != nil {
+            cell.timeLabel.text = restaurant.openTimeMorning! + ", " + restaurant.openTimeAfternoon!
+        } else {
+            cell.timeLabel.text = ""
+        }
         
         return cell
     }
