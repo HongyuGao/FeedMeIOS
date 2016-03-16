@@ -15,14 +15,13 @@ class RestaurantTableViewController: UITableViewController {
     let TEXT_HOST = "http://ec2-52-27-149-51.us-west-2.compute.amazonaws.com:8080/"
     let PICTURE_HOST = "http://ec2-52-27-149-51.us-west-2.compute.amazonaws.com:8080/"
     
-    var restaurantID = [String]()
     var restaurants = [Restaurant]()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Load the sample data.
+        // Load the data.
         loadRestaurants()
         
         // Change the backgroud color of the tab bar:
@@ -32,21 +31,10 @@ class RestaurantTableViewController: UITableViewController {
     
     func loadRestaurants() {
         // Retrieve the list of all online shops' IDs:
-        var shopIDs = [String]()
-        shopIDs.append("1")
-        shopIDs.append("17")
-        shopIDs.append("18")
-        shopIDs.append("19")
-        shopIDs.append("20")
-        shopIDs.append("21")
-        shopIDs.append("22")
+        getShopData(TEXT_HOST + "restaurants/allRestaurant")
         
-        for shopID in shopIDs {
-            getShopData("http://ec2-52-27-149-51.us-west-2.compute.amazonaws.com:8080/restaurants/query/?id=" + shopID)
-        }
+//        MARK: Local data for testing:
         
-//        getShopData
-
 //        let photo1 = UIImage(named: "rest1")!
 //        let restaurant1 = Restaurant(name: "Caprese Salad", photo: photo1, openTime: "10:00")!
 //        
@@ -58,22 +46,6 @@ class RestaurantTableViewController: UITableViewController {
 //        
 //        restaurants += [restaurant1, restaurant2, restaurant3]
     }
-    
-    // MARK: Functions to retrieve data from databse.
-//    func retrieveOnlineShops(urlString: String) {
-//        // Retrieve data from database:
-//        let url = NSURL(string: urlString)
-//        
-//        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {
-//            (myData, response, error) in
-//            
-//            dispatch_async(dispatch_get_main_queue(), {
-//                self.setShopInfo(myData!)
-//            })
-//        }
-//        
-//        task.resume()
-//    }
     
     func getShopData(urlString: String) {
         let url = NSURL(string: urlString)
@@ -90,22 +62,21 @@ class RestaurantTableViewController: UITableViewController {
     }
     
     func setShopInfo(shopData: NSData) {
-        let json: NSDictionary
+        let json: Array<AnyObject>
         do {
-            json = try NSJSONSerialization.JSONObjectWithData(shopData, options: .AllowFragments) as! NSDictionary
-            
-            if let name = json["name"] as? String,  openTimeMorning = json["openTimeMorning"] as?String{
-                
-                let restaurant = Restaurant(name: name, photo: nil, openTime: openTimeMorning)!
-                
-                restaurants += [restaurant]
-                
-                do_table_refresh()
+            json = try NSJSONSerialization.JSONObjectWithData(shopData, options: .AllowFragments) as! Array<AnyObject>
+            for index in 0...json.count-1 {
+                if let name = json[index]["name"] as? String {
+                    let openTimeMorning = json[index]["openTimeMorning"] as?String
+                    let restaurant = Restaurant(name: name, photo: nil, openTime: openTimeMorning)!
+    
+                    restaurants += [restaurant]
+                }
             }
+            do_table_refresh()
         } catch _ {
             
         }
-        
     }
     
     func do_table_refresh()
@@ -121,6 +92,7 @@ class RestaurantTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
