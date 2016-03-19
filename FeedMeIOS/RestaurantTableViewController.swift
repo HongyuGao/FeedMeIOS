@@ -31,7 +31,7 @@ class RestaurantTableViewController: UITableViewController {
     
     func loadRestaurants() {
         // Retrieve the list of all online shops' IDs:
-        getShopData(TEXT_HOST + "restaurants/allRestaurant")
+        getShopData(FeedMe.Path.TEXT_HOST + "restaurants/allRestaurant")
         
 //        MARK: Local data for testing:
         

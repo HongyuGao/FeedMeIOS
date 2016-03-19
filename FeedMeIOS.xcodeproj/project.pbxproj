@@ -18,6 +18,7 @@
 		96CFC5051C87FF2A0086F4EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96CFC5031C87FF2A0086F4EF /* LaunchScreen.storyboard */; };
 		96CFC5101C87FF2A0086F4EF /* FeedMeIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CFC50F1C87FF2A0086F4EF /* FeedMeIOSTests.swift */; };
 		96CFC51B1C87FF2A0086F4EF /* FeedMeIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CFC51A1C87FF2A0086F4EF /* FeedMeIOSUITests.swift */; };
+		96D5D8901C9CD4CB0049FC9D /* FeedMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		96CFC5161C87FF2A0086F4EF /* FeedMeIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedMeIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CFC51A1C87FF2A0086F4EF /* FeedMeIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMeIOSUITests.swift; sourceTree = "<group>"; };
 		96CFC51C1C87FF2A0086F4EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedMe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				96CFC4FA1C87FF2A0086F4EF /* AppDelegate.swift */,
+				96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */,
 				963C16B01C9905AB006C534E /* Restaurant.swift */,
 				963C16AC1C98FFEC006C534E /* RestaurantTableViewCell.swift */,
 				963C16AE1C9904CE006C534E /* RestaurantTableViewController.swift */,
@@ -269,6 +272,7 @@
 				963C16AD1C98FFEC006C534E /* RestaurantTableViewCell.swift in Sources */,
 				963C16AF1C9904CE006C534E /* RestaurantTableViewController.swift in Sources */,
 				96CFC4FB1C87FF2A0086F4EF /* AppDelegate.swift in Sources */,
+				96D5D8901C9CD4CB0049FC9D /* FeedMe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
