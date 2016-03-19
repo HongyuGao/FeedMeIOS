@@ -1,21 +1,15 @@
 //
-//  RestaurantTableViewCell.swift
+//  DishTableViewCell.swift
 //  FeedMeIOS
 //
-//  Created by Jun Chen on 16/03/2016.
+//  Created by Jun Chen on 19/03/2016.
 //  Copyright © 2016 FeedMe. All rights reserved.
 //
 
 import UIKit
 
-class RestaurantTableViewCell: UITableViewCell {
-    
-    // MARK: Properties
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var timeLabel: UILabel!
+class DishTableViewCell: UITableViewCell {
 
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +17,7 @@ class RestaurantTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
         // Configure the view for the selected state
     }
 

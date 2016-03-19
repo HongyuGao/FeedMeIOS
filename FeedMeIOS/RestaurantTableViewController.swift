@@ -11,10 +11,6 @@ import UIKit
 class RestaurantTableViewController: UITableViewController {
     
     // MARK: Properties
-    
-    let TEXT_HOST = "http://ec2-52-27-149-51.us-west-2.compute.amazonaws.com:8080/"
-    let PICTURE_HOST = "http://ec2-52-27-149-51.us-west-2.compute.amazonaws.com:8080/"
-    
     var restaurants = [Restaurant]()
 
     
@@ -22,7 +18,7 @@ class RestaurantTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // Load the data.
-        loadRestaurants()
+        loadAllRestaurants(FeedMe.Path.TEXT_HOST + "restaurants/allRestaurant")
         
         let ngColor = UIColor(red: 203/255, green:41/225, blue: 10/255, alpha: 1)
         //        self.navigationController?.navigationBar.barTintColor = bgColor
@@ -34,25 +30,7 @@ class RestaurantTableViewController: UITableViewController {
         // self.tabBarController?.tabBar.barTintColor = UIColor.redColor()
     }
     
-    func loadRestaurants() {
-        // Retrieve the list of all online shops' IDs:
-        getShopData(FeedMe.Path.TEXT_HOST + "restaurants/allRestaurant")
-        
-//        MARK: Local data for testing:
-        
-//        let photo1 = UIImage(named: "rest1")!
-//        let restaurant1 = Restaurant(name: "Caprese Salad", photo: photo1, openTime: "10:00")!
-//        
-//        let photo2 = UIImage(named: "rest2")!
-//        let restaurant2 = Restaurant(name: "Chicken and Potatoes", photo: photo2, openTime: "10:00")!
-//        
-//        let photo3 = UIImage(named: "rest3")!
-//        let restaurant3 = Restaurant(name: "Pasta with Meatballs", photo: photo3, openTime: "10:00")!
-//        
-//        restaurants += [restaurant1, restaurant2, restaurant3]
-    }
-    
-    func getShopData(urlString: String) {
+    func loadAllRestaurants(urlString: String) {
         let url = NSURL(string: urlString)
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {

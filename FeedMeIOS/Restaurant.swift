@@ -9,6 +9,7 @@
 import UIKit
 
 class Restaurant {
+    
     // MARK: Properties
     var ID: Int
     var name: String
@@ -31,4 +32,5 @@ class Restaurant {
             return nil
         }
     }
+    
 }

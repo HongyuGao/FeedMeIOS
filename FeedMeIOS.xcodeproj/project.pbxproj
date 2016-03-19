@@ -19,6 +19,9 @@
 		96CFC5101C87FF2A0086F4EF /* FeedMeIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CFC50F1C87FF2A0086F4EF /* FeedMeIOSTests.swift */; };
 		96CFC51B1C87FF2A0086F4EF /* FeedMeIOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CFC51A1C87FF2A0086F4EF /* FeedMeIOSUITests.swift */; };
 		96D5D8901C9CD4CB0049FC9D /* FeedMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */; };
+		96D5D8921C9CF9F70049FC9D /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D5D8911C9CF9F70049FC9D /* Dish.swift */; };
+		96D5D8981C9D00540049FC9D /* DishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D5D8971C9D00540049FC9D /* DishTableViewCell.swift */; };
+		96D5D89A1C9D009C0049FC9D /* DishTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D5D8991C9D009C0049FC9D /* DishTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		96CFC51A1C87FF2A0086F4EF /* FeedMeIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMeIOSUITests.swift; sourceTree = "<group>"; };
 		96CFC51C1C87FF2A0086F4EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedMe.swift; sourceTree = "<group>"; };
+		96D5D8911C9CF9F70049FC9D /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		96D5D8971C9D00540049FC9D /* DishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishTableViewCell.swift; sourceTree = "<group>"; };
+		96D5D8991C9D009C0049FC9D /* DishTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,9 @@
 			children = (
 				96CFC4FA1C87FF2A0086F4EF /* AppDelegate.swift */,
 				96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */,
+				96D5D8911C9CF9F70049FC9D /* Dish.swift */,
+				96D5D8971C9D00540049FC9D /* DishTableViewCell.swift */,
+				96D5D8991C9D009C0049FC9D /* DishTableViewController.swift */,
 				963C16B01C9905AB006C534E /* Restaurant.swift */,
 				963C16AC1C98FFEC006C534E /* RestaurantTableViewCell.swift */,
 				963C16AE1C9904CE006C534E /* RestaurantTableViewController.swift */,
@@ -268,11 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96D5D8981C9D00540049FC9D /* DishTableViewCell.swift in Sources */,
 				963C16B11C9905AB006C534E /* Restaurant.swift in Sources */,
 				963C16AD1C98FFEC006C534E /* RestaurantTableViewCell.swift in Sources */,
 				963C16AF1C9904CE006C534E /* RestaurantTableViewController.swift in Sources */,
+				96D5D8921C9CF9F70049FC9D /* Dish.swift in Sources */,
 				96CFC4FB1C87FF2A0086F4EF /* AppDelegate.swift in Sources */,
 				96D5D8901C9CD4CB0049FC9D /* FeedMe.swift in Sources */,
+				96D5D89A1C9D009C0049FC9D /* DishTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
