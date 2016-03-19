@@ -20,7 +20,12 @@ class RestaurantTableViewController: UITableViewController {
         // Load the data.
         loadAllRestaurants(FeedMe.Path.TEXT_HOST + "restaurants/allRestaurant")
         
-        // Uncomment to change the backgroud color of the tab bar:
+        let ngColor = UIColor(red: 203/255, green:41/225, blue: 10/255, alpha: 1)
+        //        self.navigationController?.navigationBar.barTintColor = bgColor
+        UINavigationBar.appearance().barTintColor = ngColor
+        UITabBar.appearance().barTintColor = ngColor
+        
+        // Change the backgroud color of the tab bar:
         // self.tabBarController?.tabBar.backgroundColor = UIColor.redColor()
         // self.tabBarController?.tabBar.barTintColor = UIColor.redColor()
     }
