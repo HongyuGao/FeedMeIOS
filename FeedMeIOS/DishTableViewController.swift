@@ -106,14 +106,8 @@ class DishTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let dish = dishes[indexPath.row]
         
-//        cell.nameLabel.text = restaurant.name
-//        cell.photoImageView.image = restaurant.logo
-//        
-//        if restaurant.openTimeMorning != nil && restaurant.openTimeAfternoon != nil {
-//            cell.timeLabel.text = restaurant.openTimeMorning! + ", " + restaurant.openTimeAfternoon!
-//        } else {
-//            cell.timeLabel.text = ""
-//        }
+        cell.nameLabel.text = dish.name!
+        cell.photoImageView.image = dish.photo
         
         return cell
     }
