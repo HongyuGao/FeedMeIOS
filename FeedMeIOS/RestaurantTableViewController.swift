@@ -67,6 +67,8 @@ class RestaurantTableViewController: UITableViewController {
             json = try NSJSONSerialization.JSONObjectWithData(shopData, options: .AllowFragments) as! Array<AnyObject>
             for index in 0...json.count-1 {
                 if let name = json[index]["name"] as?String {
+                    let ID = json[index]["id"] as?Int
+                    
                     let logo = json[index]["logo"] as?UIImage
                     // let logoString = json[index]["logo"] as?String
 //                    if logoString != nil {
@@ -86,7 +88,7 @@ class RestaurantTableViewController: UITableViewController {
                     
                     let openTimeMorning = json[index]["openTimeMorning"] as?String
                     let openTimeAfternoon = json[index]["openTimeAfternoon"] as?String
-                    let restaurant = Restaurant(name: name, logo: logo, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
+                    let restaurant = Restaurant(ID: ID!, name: name, logo: logo, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
     
                     restaurants += [restaurant]
                 }
@@ -185,7 +187,11 @@ class RestaurantTableViewController: UITableViewController {
         return cell
     }
 
-
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let restaurant = restaurants[indexPath.row]
+        FeedMe.Variable.restaurantID = restaurant.ID
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -99,7 +99,7 @@
                                     <outlet property="nameLabel" destination="aJq-hB-5BI" id="UaD-Dd-MqZ"/>
                                     <outlet property="photoImageView" destination="Y05-Od-UEL" id="ji2-Do-4XB"/>
                                     <outlet property="timeLabel" destination="e9f-LZ-whZ" id="JEh-19-gF5"/>
-                                    <segue destination="CDB-a1-nRa" kind="push" id="4IZ-Lo-nEj"/>
+                                    <segue destination="6Nn-m5-hn9" kind="push" id="Tpc-Vb-dLf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -116,23 +116,33 @@
             <point key="canvasLocation" x="-1271" y="491"/>
         </scene>
         <!--Dishes-->
-        <scene sceneID="kmv-il-vpd">
+        <scene sceneID="mHC-9K-8nI">
             <objects>
-                <viewController id="CDB-a1-nRa" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5zH-CF-GVx"/>
-                        <viewControllerLayoutGuide type="bottom" id="gwM-C2-Hla"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eIX-tG-FMi">
+                <tableViewController id="6Nn-m5-hn9" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7nR-6y-7ZR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.026156651789999999" green="0.78487646069999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Dishes" id="KdK-F7-XS2"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DKU-eq-xje" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3W1-HE-PPU">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3W1-HE-PPU" id="iNQ-xG-IST">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6Nn-m5-hn9" id="Jlt-az-wHJ"/>
+                            <outlet property="delegate" destination="6Nn-m5-hn9" id="TTG-OP-oQ6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Dishes" id="xgQ-L9-lQl"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rit-Hh-xQq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-739" y="491"/>
+            <point key="canvasLocation" x="-827" y="491"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tuw-dC-J1X">
