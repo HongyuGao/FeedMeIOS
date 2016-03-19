@@ -151,13 +151,13 @@
         <!--Dishes-->
         <scene sceneID="mHC-9K-8nI">
             <objects>
-                <tableViewController id="6Nn-m5-hn9" sceneMemberID="viewController">
+                <tableViewController id="6Nn-m5-hn9" customClass="DishTableViewController" customModule="FeedMeIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="7nR-6y-7ZR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="3W1-HE-PPU">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DishTableViewCell" rowHeight="80" id="3W1-HE-PPU" customClass="DishTableViewCell" customModule="FeedMeIOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3W1-HE-PPU" id="iNQ-xG-IST">
@@ -187,6 +187,10 @@
                                         <constraint firstItem="D99-Ps-oT0" firstAttribute="trailing" secondItem="iNQ-xG-IST" secondAttribute="trailingMargin" id="pMv-MN-kow"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="D99-Ps-oT0" id="VUy-EU-sx1"/>
+                                    <outlet property="photoImageView" destination="L7Y-De-VYI" id="xge-zl-NfE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
