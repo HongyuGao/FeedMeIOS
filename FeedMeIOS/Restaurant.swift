@@ -10,7 +10,6 @@ import UIKit
 
 class Restaurant {
     // MARK: Properties
-    
     var ID: Int
     var name: String
     var logo: UIImage?
@@ -19,7 +18,6 @@ class Restaurant {
     
     
     // MARK: Initialization
-    
     init?(ID: Int, name: String, logo: UIImage?, openTimeMorning: String?, openTimeAfternoon: String?) {
         // Initialize stored properties.
         self.ID = ID
@@ -33,5 +31,4 @@ class Restaurant {
             return nil
         }
     }
-    
 }
