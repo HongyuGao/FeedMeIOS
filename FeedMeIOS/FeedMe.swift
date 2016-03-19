@@ -9,6 +9,7 @@
 import Foundation
 
 struct FeedMe {
+    
     struct Path {
         static let TEXT_HOST = "http://ec2-52-27-149-51.us-west-2.compute.amazonaws.com:8080/"
         static let PICTURE_HOST = "http://ec2-52-27-149-51.us-west-2.compute.amazonaws.com:8080/"
@@ -19,4 +20,5 @@ struct FeedMe {
         static var restaurantID: Int?
         static var dishID: Int?
     }
+    
 }
