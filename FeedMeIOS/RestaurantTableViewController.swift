@@ -49,33 +49,27 @@ class RestaurantTableViewController: UITableViewController {
         do {
             json = try NSJSONSerialization.JSONObjectWithData(shopData, options: .AllowFragments) as! Array<AnyObject>
             for index in 0...json.count-1 {
+                
                 if let name = json[index]["name"] as?String {
                     let ID = json[index]["id"] as?Int
                     
-                    let logo = json[index]["logo"] as?UIImage
-                    // let logoString = json[index]["logo"] as?String
-//                    if logoString != nil {
-//                        let logo = loadImageFromURL(PICTURE_HOST + "img/logo/" + logoString!)
-//                    } else {
-//                        let logo = nil
-//                    } 
-                    
-//                    let logoString = json[index]["logo"] as?String
-//                    var logo = UIImage?()
-//                    downloadImage(url: logoString, logo: &logo )
-//                    do {
-//                       try loadImageFromUrl(logoString!, image: &logo!)
-//                    } catch _ {
-//                        
-//                    }
+                    // load image:
+                    let logoName = json[index]["logo"] as?String
+                    var image: UIImage?
+                    if logoName != nil {
+                        let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/logo/" + logoName!)
+                        let data = NSData(contentsOfURL : url!)
+                        image = UIImage(data : data!)
+                    }
                     
                     let openTimeMorning = json[index]["openTimeMorning"] as?String
                     let openTimeAfternoon = json[index]["openTimeAfternoon"] as?String
-                    let restaurant = Restaurant(ID: ID!, name: name, logo: logo, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
+                    let restaurant = Restaurant(ID: ID!, name: name, logo: image, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
     
                     restaurants += [restaurant]
                 }
             }
+            
             do_table_refresh()
         } catch _ {
             
@@ -103,27 +97,6 @@ class RestaurantTableViewController: UITableViewController {
         
         // Run task
         task.resume()
-    }
-    
-    // Create a function to get the data from your url:
-    func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
-        NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
-            completion(data: data, response: response, error: error)
-            }.resume()
-    }
-    
-    //Create a function to download the image (start the task):
-    func downloadImage(url: NSURL, inout logo: UIImage?){
-        print("Download Started")
-        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
-        getDataFromUrl(url) { (data, response, error)  in
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                guard let data = data where error == nil else { return }
-                print(response?.suggestedFilename ?? "")
-                print("Download Finished")
-                logo = UIImage(data: data)
-            }
-        }
     }
     
     func do_table_refresh()

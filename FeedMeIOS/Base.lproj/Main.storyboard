@@ -84,7 +84,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Y05-Od-UEL" userLabel="RestaurantLogo">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y05-Od-UEL" userLabel="RestaurantLogo">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="79"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="1rP-H7-EVj"/>
@@ -262,7 +262,4 @@
             <point key="canvasLocation" x="-1271" y="-329"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Logo" width="1177" height="300"/>
-    </resources>
 </document>

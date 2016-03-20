@@ -52,12 +52,23 @@ class DishTableViewController: UITableViewController {
                     let type = json[index]["type"] as?String
                     let name = json[index]["name"] as?String
                     let description = json[index]["description"] as?String
-                    let photo = json[index]["photo"] as?UIImage
+                    
                     let ingredient = json[index]["ingredient"] as?String
                     let price = json[index]["price"] as?Int
                     let discount = json[index]["discount"] as?Int
                     let flavor = json[index]["flavor"] as?String
                     let sold = json[index]["sold"] as?Int
+                    
+                    
+                    // load image:
+                    var photo: UIImage?
+                    let photoName = json[index]["photo"] as?String
+                    if photoName != nil {
+                        let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/photo/" + photoName!)
+                        let data = NSData(contentsOfURL : url!)
+                        photo = UIImage(data : data!)
+                    }
+
 
                     let dish = Dish(ID: ID, shopID: shopID, type: type, name: name, description: description, photo: photo, ingredient: ingredient, price: price, discount: discount, flavor: flavor, sold: sold)!
                     
