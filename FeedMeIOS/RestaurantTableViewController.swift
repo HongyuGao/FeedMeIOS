@@ -16,6 +16,9 @@ class RestaurantTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Initialization:
+        FeedMe.Variable.images = [String: UIImage]()
 
         // Load the data.
         loadAllRestaurants(FeedMe.Path.TEXT_HOST + "restaurants/allRestaurant")
@@ -52,18 +55,24 @@ class RestaurantTableViewController: UITableViewController {
                 
                 if let name = json[index]["name"] as?String {
                     let ID = json[index]["id"] as?Int
+                    let openTimeMorning = json[index]["openTimeMorning"] as?String
+                    let openTimeAfternoon = json[index]["openTimeAfternoon"] as?String
                     
                     // load image:
                     let logoName = json[index]["logo"] as?String
                     var image: UIImage?
                     if logoName != nil {
-                        let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/logo/" + logoName!)
-                        let data = NSData(contentsOfURL : url!)
-                        image = UIImage(data : data!)
+                        if let _ = FeedMe.Variable.images![logoName!] {
+                            image = FeedMe.Variable.images![logoName!]
+                        } else {
+                            let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/logo/" + logoName!)
+                            let data = NSData(contentsOfURL : url!)
+                            image = UIImage(data : data!)
+                            // Cache the newly loaded image:
+                            FeedMe.Variable.images![logoName!] = image
+                        }
                     }
-                    
-                    let openTimeMorning = json[index]["openTimeMorning"] as?String
-                    let openTimeAfternoon = json[index]["openTimeAfternoon"] as?String
+
                     let restaurant = Restaurant(ID: ID!, name: name, logo: image, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
     
                     restaurants += [restaurant]
@@ -146,6 +155,7 @@ class RestaurantTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let restaurant = restaurants[indexPath.row]
         FeedMe.Variable.restaurantID = restaurant.ID
+        FeedMe.Variable.restaurantName = restaurant.name
     }
     
     /*

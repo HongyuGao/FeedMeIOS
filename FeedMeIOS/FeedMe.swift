@@ -6,7 +6,7 @@
 //  Copyright © 2016 FeedMe. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct FeedMe {
     
@@ -18,7 +18,9 @@ struct FeedMe {
     struct Variable {
         static var userID: Int?
         static var restaurantID: Int?
+        static var restaurantName: String?
         static var dishID: Int?
+        static var images: [String: UIImage]?
     }
     
 }

@@ -23,6 +23,8 @@ class DishTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        navigationItem.title = FeedMe.Variable.restaurantName
+        
         loadAllDishes(FeedMe.Path.TEXT_HOST + "dishes/query/?shopId=" + String(FeedMe.Variable.restaurantID!))
     }
     
@@ -59,16 +61,20 @@ class DishTableViewController: UITableViewController {
                     let flavor = json[index]["flavor"] as?String
                     let sold = json[index]["sold"] as?Int
                     
-                    
                     // load image:
                     var photo: UIImage?
                     let photoName = json[index]["photo"] as?String
                     if photoName != nil {
-                        let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/photo/" + photoName!)
-                        let data = NSData(contentsOfURL : url!)
-                        photo = UIImage(data : data!)
+                        if let _ = FeedMe.Variable.images![photoName!] {
+                            photo = FeedMe.Variable.images![photoName!]
+                        } else {
+                            let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/photo/" + photoName!)
+                            let data = NSData(contentsOfURL : url!)
+                            photo = UIImage(data : data!)
+                            // Cache the newly loaded image:
+                            FeedMe.Variable.images![photoName!] = photo
+                        }
                     }
-
 
                     let dish = Dish(ID: ID, shopID: shopID, type: type, name: name, description: description, photo: photo, ingredient: ingredient, price: price, discount: discount, flavor: flavor, sold: sold)!
                     
