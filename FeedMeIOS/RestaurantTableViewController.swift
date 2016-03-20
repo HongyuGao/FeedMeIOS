@@ -39,9 +39,14 @@ class RestaurantTableViewController: UITableViewController {
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {
             (myData, response, error) in
             
-            dispatch_async(dispatch_get_main_queue(), {
-                self.setShopInfo(myData!)
-            })
+        dispatch_async(dispatch_get_main_queue(), {
+            self.setShopInfo(myData!)
+        })
+        
+//        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), {
+//            self.setShopInfo(myData!)
+//        })
+            
         }
         
         task.resume()
@@ -49,8 +54,10 @@ class RestaurantTableViewController: UITableViewController {
     
     func setShopInfo(shopData: NSData) {
         let json: Array<AnyObject>
+        
         do {
             json = try NSJSONSerialization.JSONObjectWithData(shopData, options: .AllowFragments) as! Array<AnyObject>
+            
             for index in 0...json.count-1 {
                 
                 if let name = json[index]["name"] as?String {
@@ -85,29 +92,6 @@ class RestaurantTableViewController: UITableViewController {
         }
     }
     
-    
-     func loadImageFromUrl(url: String, inout image: UIImage){
-        
-        // Create Url from string
-        let url = NSURL(string: url)!
-        
-        // Download task:
-        // - sharedSession = global NSURLCache, NSHTTPCookieStorage and NSURLCredentialStorage objects.
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url) { (responseData, responseUrl, error) -> Void in
-            // if responseData is not null...
-            if let data = responseData{
-                
-                // execute in UI thread
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    image = UIImage(data: data)!
-                })
-            }
-        }
-        
-        // Run task
-        task.resume()
-    }
-    
     func do_table_refresh()
     {
         dispatch_async(dispatch_get_main_queue(), {
@@ -118,7 +102,9 @@ class RestaurantTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
+        FeedMe.Variable.images?.removeAll()
     }
 
     
