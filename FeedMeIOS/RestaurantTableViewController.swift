@@ -39,13 +39,9 @@ class RestaurantTableViewController: UITableViewController {
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {
             (myData, response, error) in
             
-        dispatch_async(dispatch_get_main_queue(), {
-            self.setShopInfo(myData!)
-        })
-        
-//        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), {
-//            self.setShopInfo(myData!)
-//        })
+            dispatch_async(dispatch_get_main_queue(), {
+                self.setShopInfo(myData!)
+            })
             
         }
         
@@ -68,20 +64,20 @@ class RestaurantTableViewController: UITableViewController {
                     // load image:
                     let logoName = json[index]["logo"] as?String
                     var image: UIImage?
+                    
+                    var restaurant = Restaurant(ID: ID!, name: name, logo: image, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
+
                     if logoName != nil {
                         if let _ = FeedMe.Variable.images![logoName!] {
                             image = FeedMe.Variable.images![logoName!]
+                            restaurant.setLogo(image)
                         } else {
-                            let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/logo/" + logoName!)
-                            let data = NSData(contentsOfURL : url!)
-                            image = UIImage(data : data!)
-                            // Cache the newly loaded image:
-                            FeedMe.Variable.images![logoName!] = image
+                            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), {
+                                self.setImageInBG(&restaurant, logoName: logoName)
+                            })
                         }
                     }
 
-                    let restaurant = Restaurant(ID: ID!, name: name, logo: image, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
-    
                     restaurants += [restaurant]
                 }
             }
@@ -90,6 +86,19 @@ class RestaurantTableViewController: UITableViewController {
         } catch _ {
             
         }
+    }
+    
+    func setImageInBG(inout restaurant: Restaurant, logoName: String?) {
+        let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/logo/" + logoName!)
+        let data = NSData(contentsOfURL : url!)
+        let image = UIImage(data : data!)
+        
+        restaurant.logo = image!
+        
+        // Cache the newly loaded image:
+        FeedMe.Variable.images![logoName!] = image
+        
+        do_table_refresh()
     }
     
     func do_table_refresh()

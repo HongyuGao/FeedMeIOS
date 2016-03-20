@@ -33,4 +33,8 @@ class Restaurant {
         }
     }
     
+    func setLogo(image: UIImage?) {
+        self.logo = image
+    }
+    
 }

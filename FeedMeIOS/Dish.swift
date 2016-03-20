@@ -43,4 +43,8 @@ class Dish {
 
     }
     
+    func setPhoto(image: UIImage?) {
+        self.photo = image
+    }
+    
 }
