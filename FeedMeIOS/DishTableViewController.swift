@@ -12,7 +12,6 @@ class DishTableViewController: UITableViewController {
     
     // MARK: Properties
     var dishes = [Dish]()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +21,8 @@ class DishTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        navigationItem.title = FeedMe.Variable.restaurantName
         
         loadAllDishes(FeedMe.Path.TEXT_HOST + "dishes/query/?shopId=" + String(FeedMe.Variable.restaurantID!))
     }
@@ -52,15 +53,30 @@ class DishTableViewController: UITableViewController {
                     let type = json[index]["type"] as?String
                     let name = json[index]["name"] as?String
                     let description = json[index]["description"] as?String
-                    let photo = json[index]["photo"] as?UIImage
+                    
                     let ingredient = json[index]["ingredient"] as?String
                     let price = json[index]["price"] as?Int
                     let discount = json[index]["discount"] as?Int
                     let flavor = json[index]["flavor"] as?String
                     let sold = json[index]["sold"] as?Int
-
-                    let dish = Dish(ID: ID, shopID: shopID, type: type, name: name, description: description, photo: photo, ingredient: ingredient, price: price, discount: discount, flavor: flavor, sold: sold)!
                     
+                    var photo: UIImage?
+                    
+                    var dish = Dish(ID: ID, shopID: shopID, type: type, name: name, description: description, photo: photo, ingredient: ingredient, price: price, discount: discount, flavor: flavor, sold: sold)!
+                    
+                    // load image:
+                    let photoName = json[index]["photo"] as?String
+                    if photoName != nil {
+                        if let _ = FeedMe.Variable.images![photoName!] {
+                            photo = FeedMe.Variable.images![photoName!]
+                            dish.setPhoto(photo)
+                        } else {
+                            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), {
+                                self.setImageInBG(&dish, photoName: photoName)
+                            })
+                        }
+                    }
+
                     dishes += [dish]
                 }
             }
@@ -71,7 +87,19 @@ class DishTableViewController: UITableViewController {
             
         }
     }
-
+    
+    func setImageInBG(inout dish: Dish, photoName: String?) {
+        let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/photo/" + photoName!)
+        let data = NSData(contentsOfURL : url!)
+        let photo = UIImage(data : data!)
+        
+        dish.photo = photo!
+        
+        // Cache the newly loaded image:
+        FeedMe.Variable.images![photoName!] = photo
+        
+        do_table_refresh()
+    }
 
     func do_table_refresh()
     {
@@ -81,10 +109,11 @@ class DishTableViewController: UITableViewController {
         })
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
+        FeedMe.Variable.images?.removeAll()
     }
 
     // MARK: - Table view data source
