@@ -1,106 +1,106 @@
 //
-//  RestaurantTableViewController.swift
+//  DishTableViewController.swift
 //  FeedMeIOS
 //
-//  Created by Jun Chen on 16/03/2016.
+//  Created by Jun Chen on 19/03/2016.
 //  Copyright © 2016 FeedMe. All rights reserved.
 //
 
 import UIKit
 
-class RestaurantTableViewController: UITableViewController {
+class DishTableViewController: UITableViewController {
     
     // MARK: Properties
-    var restaurants = [Restaurant]()
+    var dishes = [Dish]()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Initialization:
-        FeedMe.Variable.images = [String: UIImage]()
 
-        // Load the data.
-        loadAllRestaurants(FeedMe.Path.TEXT_HOST + "restaurants/allRestaurant")
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        let ngColor = UIColor(red: 203/255, green:41/225, blue: 10/255, alpha: 1)
-        //        self.navigationController?.navigationBar.barTintColor = bgColor
-        UINavigationBar.appearance().barTintColor = ngColor
-        UITabBar.appearance().barTintColor = ngColor
+        navigationItem.title = FeedMe.Variable.restaurantName
         
-        // Change the backgroud color of the tab bar:
-        // self.tabBarController?.tabBar.backgroundColor = UIColor.redColor()
-        // self.tabBarController?.tabBar.barTintColor = UIColor.redColor()
+        loadAllDishes(FeedMe.Path.TEXT_HOST + "dishes/query/?shopId=" + String(FeedMe.Variable.restaurantID!))
     }
     
-    func loadAllRestaurants(urlString: String) {
+    func loadAllDishes(urlString: String) {
         let url = NSURL(string: urlString)
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {
             (myData, response, error) in
             
             dispatch_async(dispatch_get_main_queue(), {
-                self.setShopInfo(myData!)
+                self.setDishInfo(myData!)
             })
-            
         }
         
         task.resume()
     }
     
-    func setShopInfo(shopData: NSData) {
+    func setDishInfo(dishData: NSData) {
         let json: Array<AnyObject>
         
         do {
-            json = try NSJSONSerialization.JSONObjectWithData(shopData, options: .AllowFragments) as! Array<AnyObject>
-            
+            json = try NSJSONSerialization.JSONObjectWithData(dishData, options: .AllowFragments) as! Array<AnyObject>
             for index in 0...json.count-1 {
                 
-                if let name = json[index]["name"] as?String {
-                    let ID = json[index]["id"] as?Int
-                    let openTimeMorning = json[index]["openTimeMorning"] as?String
-                    let openTimeAfternoon = json[index]["openTimeAfternoon"] as?String
+                if let ID = json[index]["id"] as?Int {
+                    let shopID = json[index]["shopId"] as?Int
+                    let type = json[index]["type"] as?String
+                    let name = json[index]["name"] as?String
+                    let description = json[index]["description"] as?String
+                    
+                    let ingredient = json[index]["ingredient"] as?String
+                    let price = json[index]["price"] as?Int
+                    let discount = json[index]["discount"] as?Int
+                    let flavor = json[index]["flavor"] as?String
+                    let sold = json[index]["sold"] as?Int
+                    
+                    var photo: UIImage?
+                    
+                    var dish = Dish(ID: ID, shopID: shopID, type: type, name: name, description: description, photo: photo, ingredient: ingredient, price: price, discount: discount, flavor: flavor, sold: sold)!
                     
                     // load image:
-                    let logoName = json[index]["logo"] as?String
-                    var image: UIImage?
-                    
-                    var restaurant = Restaurant(ID: ID!, name: name, logo: image, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
-
-                    if logoName != nil {
-                        if let _ = FeedMe.Variable.images![logoName!] {
-                            image = FeedMe.Variable.images![logoName!]
-                            restaurant.setLogo(image)
+                    let photoName = json[index]["photo"] as?String
+                    if photoName != nil {
+                        if let _ = FeedMe.Variable.images![photoName!] {
+                            photo = FeedMe.Variable.images![photoName!]
+                            dish.setPhoto(photo)
                         } else {
                             dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0), {
-                                self.setImageInBG(&restaurant, logoName: logoName)
+                                self.setImageInBG(&dish, photoName: photoName)
                             })
                         }
                     }
 
-                    restaurants += [restaurant]
+                    dishes += [dish]
                 }
             }
             
             do_table_refresh()
+            
         } catch _ {
             
         }
     }
     
-    func setImageInBG(inout restaurant: Restaurant, logoName: String?) {
-        let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/logo/" + logoName!)
+    func setImageInBG(inout dish: Dish, photoName: String?) {
+        let url = NSURL(string: FeedMe.Path.PICTURE_HOST + "img/photo/" + photoName!)
         let data = NSData(contentsOfURL : url!)
-        let image = UIImage(data : data!)
+        let photo = UIImage(data : data!)
         
-        restaurant.logo = image!
+        dish.photo = photo!
         
         // Cache the newly loaded image:
-        FeedMe.Variable.images![logoName!] = image
+        FeedMe.Variable.images![photoName!] = photo
         
         do_table_refresh()
     }
-    
+
     func do_table_refresh()
     {
         dispatch_async(dispatch_get_main_queue(), {
@@ -108,7 +108,7 @@ class RestaurantTableViewController: UITableViewController {
             return
         })
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -116,7 +116,6 @@ class RestaurantTableViewController: UITableViewController {
         FeedMe.Variable.images?.removeAll()
     }
 
-    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -124,35 +123,30 @@ class RestaurantTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurants.count
+        return dishes.count
     }
+
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "RestaurantTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RestaurantTableViewCell
+        let cellIdentifier = "DishTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! DishTableViewCell
         
         // Fetches the appropriate meal for the data source layout.
-        let restaurant = restaurants[indexPath.row]
+        let dish = dishes[indexPath.row]
         
-        cell.nameLabel.text = restaurant.name
-        cell.photoImageView.image = restaurant.logo
-        
-        if restaurant.openTimeMorning != nil && restaurant.openTimeAfternoon != nil {
-            cell.timeLabel.text = restaurant.openTimeMorning! + ", " + restaurant.openTimeAfternoon!
-        } else {
-            cell.timeLabel.text = ""
-        }
+        cell.nameLabel.text = dish.name!
+        cell.photoImageView.image = dish.photo
         
         return cell
     }
-
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let restaurant = restaurants[indexPath.row]
-        FeedMe.Variable.restaurantID = restaurant.ID
-        FeedMe.Variable.restaurantName = restaurant.name
-    }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let dish = dishes[indexPath.row]
+        FeedMe.Variable.dishID = dish.ID
+    }
+
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
