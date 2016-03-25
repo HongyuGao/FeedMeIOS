@@ -117,10 +117,10 @@
 			children = (
 				96CFC4FA1C87FF2A0086F4EF /* AppDelegate.swift */,
 				96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */,
+				96F673DD1CA54F25003F8D82 /* Order.swift */,
 				96D5D8911C9CF9F70049FC9D /* Dish.swift */,
 				96D5D8971C9D00540049FC9D /* DishTableViewCell.swift */,
 				96D5D8991C9D009C0049FC9D /* DishTableViewController.swift */,
-				96F673DD1CA54F25003F8D82 /* Order.swift */,
 				963C16B01C9905AB006C534E /* Restaurant.swift */,
 				963C16AC1C98FFEC006C534E /* RestaurantTableViewCell.swift */,
 				963C16AE1C9904CE006C534E /* RestaurantTableViewController.swift */,

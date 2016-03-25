@@ -21,20 +21,7 @@ struct FeedMe {
         static var restaurantName: String?
         static var dishID: Int?
         static var images: [String: UIImage]?
+        static var order: Order?
     }
-    
-    struct Order {
-        // total number of items:
-        static var itemsCount: Int = 0
         
-        // total number of prices:
-        static var totalPrice: Double = 0
-        
-        // information for all dishes in the shopping cart:
-        // list of all dishes:
-        static var dishes: [Dish] = [Dish]()
-        // count of every dish: Dish ID -> Dish Count:
-        static var dish2count: Dictionary<Int, Int> = Dictionary<Int, Int>()
-    }
-    
 }

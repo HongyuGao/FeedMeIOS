@@ -25,7 +25,6 @@ class Restaurant {
     
     // MARK: Initialization
     init?(ID: Int, name: String?, logo: UIImage?, description: String?, type: String?, phone: String?, email: String?, openTimeMorning: String?, openTimeAfternoon: String?, checkin: Bool) {
-        // Initialize stored properties.
         self.ID = ID
         self.name = name
         self.logo = logo
