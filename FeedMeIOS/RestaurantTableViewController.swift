@@ -19,18 +19,28 @@ class RestaurantTableViewController: UITableViewController {
         
         // Initialization:
         FeedMe.Variable.images = [String: UIImage]()
+        
+        let bgImage = UIImage(named:"background.png")
+        let imageView = UIImageView(frame: self.view.bounds)
+        imageView.image = bgImage
+        
+        self.view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
 
-        // Load the data.
+        // Load the data:
         loadAllRestaurants(FeedMe.Path.TEXT_HOST + "restaurants/allRestaurant")
         
+        // Change the backgroud color of the navigation bar & tab bar:
+        let logoImage = UIImageView(frame: CGRect(x:0, y:0, width: 80, height: 30))
+        logoImage.contentMode = .ScaleAspectFit
+        let nglogo = UIImage(named: "Logo.png")
+        logoImage.image = nglogo
+        self.navigationController?.navigationBar.topItem?.titleView = logoImage
         let ngColor = UIColor(red: 203/255, green:41/225, blue: 10/255, alpha: 1)
-        //        self.navigationController?.navigationBar.barTintColor = bgColor
-        UINavigationBar.appearance().barTintColor = ngColor
-        UITabBar.appearance().barTintColor = ngColor
-        
-        // Change the backgroud color of the tab bar:
-        // self.tabBarController?.tabBar.backgroundColor = UIColor.redColor()
-        // self.tabBarController?.tabBar.barTintColor = UIColor.redColor()
+        self.navigationController?.navigationBar.backgroundColor = ngColor
+        self.navigationController?.navigationBar.barTintColor = ngColor
+        self.tabBarController?.tabBar.backgroundColor = ngColor
+        self.tabBarController?.tabBar.barTintColor = ngColor
     }
     
     func loadAllRestaurants(urlString: String) {
@@ -56,16 +66,22 @@ class RestaurantTableViewController: UITableViewController {
             
             for index in 0...json.count-1 {
                 
-                if let name = json[index]["name"] as?String {
-                    let ID = json[index]["id"] as?Int
+                if let ID = json[index]["id"] as?Int {
+                    let name = json[index]["name"] as?String
+                    let description = json[index]["description"] as?String
+                    let type = json[index]["type"] as?String
+                    let phone = json[index]["phone"] as?String
+                    let email = json[index]["email"] as?String
                     let openTimeMorning = json[index]["openTimeMorning"] as?String
                     let openTimeAfternoon = json[index]["openTimeAfternoon"] as?String
+                    // let checkin = json[index]["checkin"] as?Bool
+                    let checkin = true // MARK: TO BE CHANGED!
                     
                     // load image:
                     let logoName = json[index]["logo"] as?String
                     var image: UIImage?
-                    
-                    var restaurant = Restaurant(ID: ID!, name: name, logo: image, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
+                
+                    var restaurant = Restaurant(ID: ID, name: name, logo: image, description: description, type: type, phone: phone, email: email, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon, checkin: checkin)!
 
                     if logoName != nil {
                         if let _ = FeedMe.Variable.images![logoName!] {
@@ -138,8 +154,19 @@ class RestaurantTableViewController: UITableViewController {
         cell.nameLabel.text = restaurant.name
         cell.photoImageView.image = restaurant.logo
         
+        cell.photoImageView.layer.cornerRadius = 10.0
+        cell.photoImageView.layer.borderWidth = 2.0
+        cell.photoImageView.clipsToBounds = true
+        if((indexPath.row)%2 == 0) {
+            cell.backgroundColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.6)
+            cell.photoImageView.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.6).CGColor
+        } else {
+            cell.backgroundColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.5)
+            cell.photoImageView.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.5).CGColor
+        }
+        
         if restaurant.openTimeMorning != nil && restaurant.openTimeAfternoon != nil {
-            cell.timeLabel.text = restaurant.openTimeMorning! + ", " + restaurant.openTimeAfternoon!
+            cell.timeLabel.text = restaurant.openTimeMorning! + "\n" + restaurant.openTimeAfternoon!
         } else {
             cell.timeLabel.text = ""
         }

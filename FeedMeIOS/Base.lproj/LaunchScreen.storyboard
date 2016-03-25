@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,11 +17,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rest1" translatesAutoresizingMaskIntoConstraints="NO" id="XUg-aL-vSz">
-                                <rect key="frame" x="20" y="28" width="560" height="552"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XUg-aL-vSz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.79607843140000001" green="0.16078431369999999" blue="0.039215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="9HZ-gF-yVu">
+                                <rect key="frame" x="195" y="109" width="210" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="ru0-Rx-Uqu"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lauchimg2" translatesAutoresizingMaskIntoConstraints="NO" id="HfH-4K-Jsl">
+                                <rect key="frame" x="324" y="294" width="155" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="155" id="mhX-hY-FiR"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lauchimg3" translatesAutoresizingMaskIntoConstraints="NO" id="qJd-SQ-Qkg">
+                                <rect key="frame" x="226" y="333" width="147" height="121"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="147" id="21v-ff-ghx"/>
+                                    <constraint firstAttribute="height" constant="121" id="QcY-fh-ywF"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="HfH-4K-Jsl" secondAttribute="bottom" constant="154" id="2LH-jx-Skd"/>
+                            <constraint firstItem="qJd-SQ-Qkg" firstAttribute="top" secondItem="9HZ-gF-yVu" secondAttribute="bottom" constant="134" id="5L4-TX-3SD"/>
+                            <constraint firstItem="XUg-aL-vSz" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="7lY-J9-ygx"/>
+                            <constraint firstItem="XUg-aL-vSz" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="91l-dM-o8b"/>
+                            <constraint firstItem="qJd-SQ-Qkg" firstAttribute="centerX" secondItem="XUg-aL-vSz" secondAttribute="centerX" id="Lwf-h6-XYR"/>
+                            <constraint firstItem="XUg-aL-vSz" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="NVM-cb-OoE"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="qJd-SQ-Qkg" secondAttribute="bottom" constant="146" id="O8G-qR-eDX"/>
+                            <constraint firstAttribute="trailing" secondItem="XUg-aL-vSz" secondAttribute="trailing" id="Y03-XS-0JB"/>
+                            <constraint firstItem="9HZ-gF-yVu" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="89" id="Y5L-KU-FBA"/>
+                            <constraint firstItem="HfH-4K-Jsl" firstAttribute="top" secondItem="9HZ-gF-yVu" secondAttribute="bottom" constant="95" id="bU7-mg-bB8"/>
+                            <constraint firstItem="9HZ-gF-yVu" firstAttribute="centerX" secondItem="XUg-aL-vSz" secondAttribute="centerX" id="bpt-YL-opR"/>
+                            <constraint firstItem="HfH-4K-Jsl" firstAttribute="leading" secondItem="qJd-SQ-Qkg" secondAttribute="trailing" constant="-49" id="m6Z-H7-yYi"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="9HZ-gF-yVu" secondAttribute="bottom" constant="401" id="tpb-OJ-yj9"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -30,6 +65,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="rest1" width="1984" height="1116"/>
+        <image name="Logo" width="1072" height="260"/>
+        <image name="lauchimg2" width="64" height="64"/>
+        <image name="lauchimg3" width="140" height="87"/>
     </resources>
 </document>

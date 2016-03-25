@@ -13,6 +13,7 @@ class DishTableViewCell: UITableViewCell {
     // MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var addToShoppingCart: UIButton!
     
     
     override func awakeFromNib() {
@@ -26,4 +27,10 @@ class DishTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func addToShoppingCart(sender: UIButton) {
+        print(FeedMe.Variable.dishID)
+        print(addToShoppingCart.tag)
+        // MAKR: TODO!
+    }
+    
 }

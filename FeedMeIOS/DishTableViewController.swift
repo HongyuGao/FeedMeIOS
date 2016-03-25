@@ -15,7 +15,7 @@ class DishTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+ 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -137,6 +137,7 @@ class DishTableViewController: UITableViewController {
         
         cell.nameLabel.text = dish.name!
         cell.photoImageView.image = dish.photo
+        cell.addToShoppingCart.tag = indexPath.row
         
         return cell
     }
