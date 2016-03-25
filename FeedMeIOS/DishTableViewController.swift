@@ -12,6 +12,7 @@ class DishTableViewController: UITableViewController {
     
     // MARK: Properties
     var dishes = [Dish]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,9 @@ class DishTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         navigationItem.title = FeedMe.Variable.restaurantName
+        
+        
+        
         
         loadAllDishes(FeedMe.Path.TEXT_HOST + "dishes/query/?shopId=" + String(FeedMe.Variable.restaurantID!))
     }
