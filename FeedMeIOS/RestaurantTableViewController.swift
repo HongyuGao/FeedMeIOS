@@ -23,14 +23,25 @@ class RestaurantTableViewController: UITableViewController {
         // Load the data.
         loadAllRestaurants(FeedMe.Path.TEXT_HOST + "restaurants/allRestaurant")
         
-        let ngColor = UIColor(red: 203/255, green:41/225, blue: 10/255, alpha: 1)
-        //        self.navigationController?.navigationBar.barTintColor = bgColor
-        UINavigationBar.appearance().barTintColor = ngColor
-        UITabBar.appearance().barTintColor = ngColor
+        // Change the backgroud color of the navigation bar & tab bar:
         
-        // Change the backgroud color of the tab bar:
-        // self.tabBarController?.tabBar.backgroundColor = UIColor.redColor()
-        // self.tabBarController?.tabBar.barTintColor = UIColor.redColor()
+        let logoImage = UIImageView(frame: CGRect(x:0, y:0, width: 200, height: 45))
+        logoImage.contentMode = .ScaleAspectFit
+        let nglogo = UIImage(named: "Logo.png")
+        logoImage.image = nglogo
+        self.navigationController?.navigationBar.topItem?.titleView = logoImage
+        
+        let ngColor = UIColor(red: 203/255, green:41/225, blue: 10/255, alpha: 1)
+        
+        self.navigationController?.navigationBar.backgroundColor = ngColor
+        self.navigationController?.navigationBar.barTintColor = ngColor
+        self.tabBarController?.tabBar.backgroundColor = ngColor
+        self.tabBarController?.tabBar.barTintColor = ngColor
+        
+        
+//        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.magentaColor()], forState:.Normal)
+//        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState:.Selected)
+        
     }
     
     func loadAllRestaurants(urlString: String) {
