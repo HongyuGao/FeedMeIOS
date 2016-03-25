@@ -196,6 +196,15 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-vJ-ouT">
+                                            <rect key="frame" x="286" y="44" width="26" height="24"/>
+                                            <state key="normal" title="Button" image="add_shopping_cart">
+                                                <color key="titleShadowColor" red="0.026156651789999999" green="0.78487646069999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addToShoppingCart:" destination="3W1-HE-PPU" eventType="touchUpInside" id="uPT-IJ-MYw"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="L7Y-De-VYI" firstAttribute="bottom" secondItem="iNQ-xG-IST" secondAttribute="bottomMargin" id="3Cw-30-e6m"/>
@@ -208,6 +217,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addToShoppingCart" destination="jWj-vJ-ouT" id="H82-Qg-IOS"/>
                                     <outlet property="nameLabel" destination="D99-Ps-oT0" id="VUy-EU-sx1"/>
                                     <outlet property="photoImageView" destination="L7Y-De-VYI" id="xge-zl-NfE"/>
                                 </connections>
@@ -288,5 +298,6 @@
     </scenes>
     <resources>
         <image name="Logo" width="1177" height="300"/>
+        <image name="add_shopping_cart" width="24" height="24"/>
     </resources>
 </document>
