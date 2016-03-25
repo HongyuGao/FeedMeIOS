@@ -19,29 +19,28 @@ class RestaurantTableViewController: UITableViewController {
         
         // Initialization:
         FeedMe.Variable.images = [String: UIImage]()
+        
+        let bgImage = UIImage(named:"background.png")
+        let imageView = UIImageView(frame: self.view.bounds)
+        imageView.image = bgImage
+        
+        self.view.addSubview(imageView)
+        self.view.sendSubviewToBack(imageView)
 
-        // Load the data.
+        // Load the data:
         loadAllRestaurants(FeedMe.Path.TEXT_HOST + "restaurants/allRestaurant")
         
         // Change the backgroud color of the navigation bar & tab bar:
-        
-        let logoImage = UIImageView(frame: CGRect(x:0, y:0, width: 200, height: 45))
+        let logoImage = UIImageView(frame: CGRect(x:0, y:0, width: 80, height: 30))
         logoImage.contentMode = .ScaleAspectFit
         let nglogo = UIImage(named: "Logo.png")
         logoImage.image = nglogo
         self.navigationController?.navigationBar.topItem?.titleView = logoImage
-        
         let ngColor = UIColor(red: 203/255, green:41/225, blue: 10/255, alpha: 1)
-        
         self.navigationController?.navigationBar.backgroundColor = ngColor
         self.navigationController?.navigationBar.barTintColor = ngColor
         self.tabBarController?.tabBar.backgroundColor = ngColor
         self.tabBarController?.tabBar.barTintColor = ngColor
-        
-        
-//        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.magentaColor()], forState:.Normal)
-//        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState:.Selected)
-        
     }
     
     func loadAllRestaurants(urlString: String) {
@@ -76,7 +75,7 @@ class RestaurantTableViewController: UITableViewController {
                     let openTimeMorning = json[index]["openTimeMorning"] as?String
                     let openTimeAfternoon = json[index]["openTimeAfternoon"] as?String
                     // let checkin = json[index]["checkin"] as?Bool
-                    let checkin = true
+                    let checkin = true // MARK: TO BE CHANGED!
                     
                     // load image:
                     let logoName = json[index]["logo"] as?String
@@ -155,8 +154,19 @@ class RestaurantTableViewController: UITableViewController {
         cell.nameLabel.text = restaurant.name
         cell.photoImageView.image = restaurant.logo
         
+        cell.photoImageView.layer.cornerRadius = 10.0
+        cell.photoImageView.layer.borderWidth = 2.0
+        cell.photoImageView.clipsToBounds = true
+        if((indexPath.row)%2 == 0) {
+            cell.backgroundColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.6)
+            cell.photoImageView.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.6).CGColor
+        } else {
+            cell.backgroundColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.5)
+            cell.photoImageView.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.5).CGColor
+        }
+        
         if restaurant.openTimeMorning != nil && restaurant.openTimeAfternoon != nil {
-            cell.timeLabel.text = restaurant.openTimeMorning! + ", " + restaurant.openTimeAfternoon!
+            cell.timeLabel.text = restaurant.openTimeMorning! + "\n" + restaurant.openTimeAfternoon!
         } else {
             cell.timeLabel.text = ""
         }

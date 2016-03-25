@@ -65,7 +65,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="1177" height="300"/>
+        <image name="Logo" width="1072" height="260"/>
         <image name="lauchimg2" width="64" height="64"/>
         <image name="lauchimg3" width="140" height="87"/>
     </resources>
