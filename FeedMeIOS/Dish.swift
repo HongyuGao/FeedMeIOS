@@ -38,9 +38,6 @@ class Dish {
         self.discount = discount
         self.flavor = flavor
         self.sold = sold
-        
-        // Initialization should fail if there is no ID.
-
     }
     
     func setPhoto(image: UIImage?) {
