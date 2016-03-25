@@ -56,16 +56,22 @@ class RestaurantTableViewController: UITableViewController {
             
             for index in 0...json.count-1 {
                 
-                if let name = json[index]["name"] as?String {
-                    let ID = json[index]["id"] as?Int
+                if let ID = json[index]["id"] as?Int {
+                    let name = json[index]["name"] as?String
+                    let description = json[index]["description"] as?String
+                    let type = json[index]["type"] as?String
+                    let phone = json[index]["phone"] as?String
+                    let email = json[index]["email"] as?String
                     let openTimeMorning = json[index]["openTimeMorning"] as?String
                     let openTimeAfternoon = json[index]["openTimeAfternoon"] as?String
+                    // let checkin = json[index]["checkin"] as?Bool
+                    let checkin = true
                     
                     // load image:
                     let logoName = json[index]["logo"] as?String
                     var image: UIImage?
-                    
-                    var restaurant = Restaurant(ID: ID!, name: name, logo: image, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon)!
+                
+                    var restaurant = Restaurant(ID: ID, name: name, logo: image, description: description, type: type, phone: phone, email: email, openTimeMorning: openTimeMorning, openTimeAfternoon: openTimeAfternoon, checkin: checkin)!
 
                     if logoName != nil {
                         if let _ = FeedMe.Variable.images![logoName!] {
