@@ -50,7 +50,7 @@ class DishTableViewController: UITableViewController {
             
             self.presentViewController(alert, animated: true, completion: nil)
         }
-    }
+    } 
     
     func loadAllDishes(urlString: String) {
         let url = NSURL(string: urlString)
