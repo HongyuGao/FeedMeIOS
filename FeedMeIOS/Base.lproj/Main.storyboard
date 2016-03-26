@@ -40,7 +40,7 @@
             </objects>
             <point key="canvasLocation" x="-739" y="-329"/>
         </scene>
-        <!--Hot Dishes-->
+        <!--Order-->
         <scene sceneID="1Oz-BK-GIw">
             <objects>
                 <viewController id="gXK-7N-Smw" sceneMemberID="viewController">
@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.026156651789999999" green="0.78487646069999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Hot Dishes" id="t7Z-Yh-iWe"/>
+                    <navigationItem key="navigationItem" title="Order" id="t7Z-Yh-iWe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UfJ-EO-xRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -195,10 +195,10 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-vJ-ouT">
                                             <rect key="frame" x="236" y="58" width="76" height="24"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="76" id="ZUe-vF-jKi"/>
+                                                <constraint firstAttribute="width" constant="76" id="7kz-l7-tXq"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <state key="normal" title="Button" image="add_shopping_cart">
+                                            <state key="normal" title="Button">
                                                 <color key="titleColor" red="0.76078431369999999" green="0.1764705882" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
@@ -215,13 +215,14 @@
                                     <constraints>
                                         <constraint firstItem="L7Y-De-VYI" firstAttribute="bottom" secondItem="iNQ-xG-IST" secondAttribute="bottomMargin" constant="3" id="3Cw-30-e6m"/>
                                         <constraint firstItem="D99-Ps-oT0" firstAttribute="top" secondItem="iNQ-xG-IST" secondAttribute="topMargin" id="E2Q-rW-hNr"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="jWj-vJ-ouT" secondAttribute="trailing" id="FLp-Np-swa"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="D99-Ps-oT0" secondAttribute="bottom" constant="31.5" id="JzE-vB-Abq"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jWj-vJ-ouT" secondAttribute="bottom" constant="-1" id="ahu-AS-ruX"/>
                                         <constraint firstItem="L7Y-De-VYI" firstAttribute="top" secondItem="D99-Ps-oT0" secondAttribute="top" constant="-2" id="c0d-Qj-CDC"/>
                                         <constraint firstItem="L7Y-De-VYI" firstAttribute="leading" secondItem="iNQ-xG-IST" secondAttribute="leadingMargin" constant="4" id="fC6-lb-0GU"/>
+                                        <constraint firstItem="jWj-vJ-ouT" firstAttribute="trailing" secondItem="D99-Ps-oT0" secondAttribute="trailing" id="i1S-JB-VdQ"/>
                                         <constraint firstItem="D99-Ps-oT0" firstAttribute="leading" secondItem="L7Y-De-VYI" secondAttribute="trailing" constant="8" id="nmx-vk-noR"/>
-                                        <constraint firstItem="jWj-vJ-ouT" firstAttribute="bottom" secondItem="L7Y-De-VYI" secondAttribute="bottom" constant="-2" id="o4e-t4-JcU"/>
                                         <constraint firstItem="D99-Ps-oT0" firstAttribute="trailing" secondItem="iNQ-xG-IST" secondAttribute="trailingMargin" id="pMv-MN-kow"/>
+                                        <constraint firstItem="jWj-vJ-ouT" firstAttribute="top" secondItem="D99-Ps-oT0" secondAttribute="bottom" constant="8" symbolic="YES" id="v2T-Dg-W99"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -237,6 +238,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Dishes" id="xgQ-L9-lQl">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="WLt-cK-Leo">
+                            <connections>
+                                <action selector="backToRestList:" destination="6Nn-m5-hn9" id="Oun-I7-eKw"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="shopping_cart" id="XjZ-n3-nJr">
                             <connections>
                                 <segue destination="e4I-LP-3UF" kind="push" id="F5K-mc-JwM"/>
@@ -329,7 +335,7 @@
         <scene sceneID="9i5-YW-v6d">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bqO-G9-eLe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="y1a-Kg-AHk"/>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="y1a-Kg-AHk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jnx-uQ-bYR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -366,7 +372,6 @@
     </scenes>
     <resources>
         <image name="Logo" width="1072" height="260"/>
-        <image name="add_shopping_cart" width="24" height="24"/>
         <image name="shopping_cart" width="24" height="24"/>
     </resources>
 </document>

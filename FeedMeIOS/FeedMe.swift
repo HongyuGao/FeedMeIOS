@@ -22,6 +22,7 @@ struct FeedMe {
         static var dishID: Int?
         static var images: [String: UIImage]?
         static var order: Order?
+        static var dishes: [Dish]?
     }
         
 }

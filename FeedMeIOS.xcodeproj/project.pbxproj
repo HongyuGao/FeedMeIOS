@@ -225,7 +225,7 @@
 				TargetAttributes = {
 					96CFC4F61C87FF2A0086F4EF = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = 85TG5MLMY3;
+						DevelopmentTeam = R8LYCYQCX3;
 					};
 					96CFC50A1C87FF2A0086F4EF = {
 						CreatedOnToolsVersion = 7.2.1;

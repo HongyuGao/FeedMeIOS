@@ -23,7 +23,7 @@ class Order {
     var id2count: [Int: Int]
     
     // total number of items:
-    var itemsCount: Int = 0
+    var totalItems: Int = 0
     
     // total number of prices:
     var totalPrice: Double = 0
@@ -58,7 +58,7 @@ class Order {
     
     // Change and set items count.
     func changeItemsCount(increase: Bool, qty: Int) {
-        self.itemsCount = increase ? self.itemsCount + qty : self.itemsCount - qty
+        self.totalItems = increase ? self.totalItems + qty : self.totalItems - qty
     }
     
     // Change and set total price.
@@ -75,6 +75,9 @@ class Order {
             id2dish[dishID] = newDish
             id2count[dishID] = qty
         }
+        
+        totalItems += qty
+        totalPrice += Double(newDish.price!) * Double(qty)
     }
     
     // Remove dish from the order.
@@ -84,6 +87,9 @@ class Order {
             id2dish.removeValueForKey(dishID)
             id2count.removeValueForKey(dishID)
         }
+        
+        totalItems -= qty
+        totalPrice -= Double(id2dish[dishID]!.price!) * Double(qty)
     }
     
     // Check if the order is empty.

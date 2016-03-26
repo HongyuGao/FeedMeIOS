@@ -10,15 +10,12 @@ import UIKit
 
 class DishTableViewController: UITableViewController {
     
-    // MARK: Properties
-    var dishes = [Dish]()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         FeedMe.Variable.images = [String: UIImage]()
         FeedMe.Variable.order = Order(userID: FeedMe.Variable.userID, restaurantID: FeedMe.Variable.restaurantID!)
+        FeedMe.Variable.dishes = [Dish]()
         
         let bgImage = UIImage(named:"background.png")
         let imageView = UIImageView(frame: self.view.bounds)
@@ -35,6 +32,24 @@ class DishTableViewController: UITableViewController {
         navigationItem.title = FeedMe.Variable.restaurantName
         
         loadAllDishes(FeedMe.Path.TEXT_HOST + "dishes/query/?shopId=" + String(FeedMe.Variable.restaurantID!))
+    }
+    
+    @IBAction func backToRestList(sender: UIBarButtonItem) {
+        if FeedMe.Variable.order!.isEmptyOrder() {
+           self.navigationController?.popViewControllerAnimated(true)
+        } else {
+            let alert = UIAlertController(title: "Tips", message: "Change to another restaurant will empty your current shopping cart, are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) { (ACTION) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil)
+            
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func loadAllDishes(urlString: String) {
@@ -87,7 +102,7 @@ class DishTableViewController: UITableViewController {
                         }
                     }
 
-                    dishes += [dish]
+                    FeedMe.Variable.dishes = FeedMe.Variable.dishes! + [dish]
                 }
             }
             
@@ -133,7 +148,7 @@ class DishTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dishes.count
+        return FeedMe.Variable.dishes!.count
     }
 
 
@@ -143,7 +158,7 @@ class DishTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! DishTableViewCell
         
         // Fetches the appropriate meal for the data source layout.
-        let dish = dishes[indexPath.row]
+        let dish = FeedMe.Variable.dishes![indexPath.row]
         
         cell.nameLabel.text = dish.name!
         cell.photoImageView.image = dish.photo
@@ -158,7 +173,7 @@ class DishTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let dish = dishes[indexPath.row]
+        let dish = FeedMe.Variable.dishes![indexPath.row]
         FeedMe.Variable.dishID = dish.ID
     }
 
