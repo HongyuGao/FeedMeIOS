@@ -13,28 +13,18 @@ class DishTableViewController: UITableViewController {
     // MARK: Properties
     var dishes = [Dish]()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         FeedMe.Variable.images = [String: UIImage]()
+        FeedMe.Variable.order = Order(userID: FeedMe.Variable.userID, restaurantID: FeedMe.Variable.restaurantID!)
         
         let bgImage = UIImage(named:"background.png")
         let imageView = UIImageView(frame: self.view.bounds)
         imageView.image = bgImage
         
         self.tableView.backgroundView = imageView
-        
-//        self.view.addSubview(imageView)
-//        self.view.sendSubviewToBack(imageView)
-        
-//        let nav = self.navigationController?.navigationBar
-//        nav?.barStyle = UIBarStyle.Black
-//        nav?.tintColor = UIColor.whiteColor()
-//        nav?.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-//        self.navigationController?.navigationBar.tintColor = UIColor(red:255/255,green:255/255,blue:255/255, alpha:1.0)
-
-        
  
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -43,9 +33,6 @@ class DishTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         navigationItem.title = FeedMe.Variable.restaurantName
-        
-        
-        
         
         loadAllDishes(FeedMe.Path.TEXT_HOST + "dishes/query/?shopId=" + String(FeedMe.Variable.restaurantID!))
     }
@@ -162,20 +149,10 @@ class DishTableViewController: UITableViewController {
         cell.photoImageView.image = dish.photo
         cell.addToShoppingCart.tag = indexPath.row
         
-        
-        
         cell.photoImageView.layer.cornerRadius = 10.0
         cell.photoImageView.layer.borderWidth = 0.0
         cell.photoImageView.clipsToBounds = true
         cell.backgroundColor = UIColor(red: 255/225, green: 255/255, blue: 255/255, alpha: 0.6)
-//        if((indexPath.row)%2 == 0) {
-//            cell.backgroundColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.6)
-//            cell.photoImageView.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.6).CGColor
-//        } else {
-//            cell.backgroundColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.5)
-//            cell.photoImageView.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.5).CGColor
-//        }
-        
         
         return cell
     }

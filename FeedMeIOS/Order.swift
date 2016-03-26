@@ -16,31 +16,25 @@ class Order {
     var orderTime: String?
     var deliveryAddress: String?
     var phoneNumber: String?
+    // information for all dishes in the shopping cart:
+    // list of all dishes:
+    var id2dish: [Int: Dish]
+    // count of every dish: Dish ID -> Dish Count:
+    var id2count: [Int: Int]
     
     // total number of items:
     var itemsCount: Int = 0
     
     // total number of prices:
     var totalPrice: Double = 0
-    
-    // information for all dishes in the shopping cart:
-    // list of all dishes:
-    var dishes: [Dish]
-    // count of every dish: Dish ID -> Dish Count:
-    var dish2count: Dictionary<Int, Int>
-    
+
     
     // MARK: Initialization
-    init(userID: String?, restaurantID: Int, orderTime: String, deliveryAddress: String?, phoneNumber: String?, itemsCount: Int = 0, totalPrice: Double = 0, dishes: [Dish], dish2count: Dictionary<Int, Int>) {
+    init(userID: String?, restaurantID: Int) {
         self.userID = userID
         self.restaurantID = restaurantID
-        self.orderTime = orderTime
-        self.deliveryAddress = deliveryAddress
-        self.phoneNumber = phoneNumber
-        self.itemsCount = itemsCount
-        self.totalPrice = totalPrice
-        self.dishes = dishes
-        self.dish2count = dish2count
+        self.id2dish = [Int: Dish]()
+        self.id2count = [Int: Int]()
     }
 
     
@@ -73,13 +67,28 @@ class Order {
     }
     
     // Add dish to the order.
-    func addDish(dish: Dish, qty: Int = 1) {
-
+    func addDish(newDish: Dish, qty: Int = 1) {
+        let dishID = newDish.ID
+        if id2dish[dishID] != nil {
+            id2count[dishID] = id2count[dishID]! + qty
+        } else {
+            id2dish[dishID] = newDish
+            id2count[dishID] = qty
+        }
     }
     
     // Remove dish from the order.
-    func removeDish(dishID: Int) {
+    func removeDish(dishID: Int, qty: Int = 1) {
+        id2count[dishID] = id2count[dishID]! - qty
+        if id2count[dishID] == 0 {
+            id2dish.removeValueForKey(dishID)
+            id2count.removeValueForKey(dishID)
+        }
+    }
     
+    // Check if the order is empty.
+    func isEmptyOrder() -> Bool {
+        return self.totalPrice == 0
     }
 
 }
