@@ -21,7 +21,7 @@ class DishTableViewController: UITableViewController {
         let imageView = UIImageView(frame: self.view.bounds)
         imageView.image = bgImage
         
-        self.tableView.backgroundView = imageView
+        self.tableView.backgroundView = imageView 
  
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
