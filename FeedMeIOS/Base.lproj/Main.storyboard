@@ -236,11 +236,71 @@
                             <outlet property="delegate" destination="6Nn-m5-hn9" id="TTG-OP-oQ6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Dishes" id="xgQ-L9-lQl"/>
+                    <navigationItem key="navigationItem" title="Dishes" id="xgQ-L9-lQl">
+                        <barButtonItem key="rightBarButtonItem" image="shopping_cart" id="XjZ-n3-nJr">
+                            <connections>
+                                <segue destination="e4I-LP-3UF" kind="push" id="F5K-mc-JwM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rit-Hh-xQq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-739" y="491"/>
+        </scene>
+        <!--Your Order-->
+        <scene sceneID="j8L-6D-NlU">
+            <objects>
+                <tableViewController id="e4I-LP-3UF" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="rEZ-zF-th5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderTableViewCell" id="e9S-W7-2sb">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e9S-W7-2sb" id="rBY-nj-ROO">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="e4I-LP-3UF" id="qfa-LA-0X1"/>
+                            <outlet property="delegate" destination="e4I-LP-3UF" id="ubx-rQ-u6R"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Your Order" id="eaJ-6a-TxK">
+                        <barButtonItem key="rightBarButtonItem" title="Confirm" id="7uz-5I-xqI">
+                            <connections>
+                                <segue destination="UDg-v5-e60" kind="push" id="P8L-QF-u2O"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ixs-Jx-ypL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-263" y="491"/>
+        </scene>
+        <!--Payment-->
+        <scene sceneID="dqX-3l-uQ4">
+            <objects>
+                <viewController id="UDg-v5-e60" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xwg-29-GPU"/>
+                        <viewControllerLayoutGuide type="bottom" id="86L-ux-BTs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3NI-G5-gJg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Payment" id="owS-7c-xHo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ri-gs-kob" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="249" y="491"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tuw-dC-J1X">
@@ -307,5 +367,6 @@
     <resources>
         <image name="Logo" width="1072" height="260"/>
         <image name="add_shopping_cart" width="24" height="24"/>
+        <image name="shopping_cart" width="24" height="24"/>
     </resources>
 </document>
