@@ -15,7 +15,7 @@ class RestaurantTableViewController: UITableViewController {
 
     
     override func viewDidLoad() {
-        super.viewDidLoad()  
+        super.viewDidLoad()   
         
         // Initialization:
         FeedMe.Variable.images = [String: UIImage]()
