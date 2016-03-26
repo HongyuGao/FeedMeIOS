@@ -16,7 +16,7 @@ struct FeedMe {
     }
     
     struct Variable {
-        static var userID: Int?
+        static var userID: String?
         static var restaurantID: Int?
         static var restaurantName: String?
         static var dishID: Int?
