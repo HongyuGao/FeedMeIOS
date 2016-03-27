@@ -68,7 +68,7 @@ class OrderTableViewController: UITableViewController {
         // Configure the cell...
         let dish = FeedMe.Variable.order!.dishesList()[indexPath.row]
         cell.dishNameLabel.text = dish.name!
-        cell.dishPriceLabel.text = String(dish.price!)
+        cell.dishPriceLabel.text = "$" + String(format: "%.2f", Double(dish.price!))
         cell.dishQtyLabel.text = String(FeedMe.Variable.order!.id2count[dish.ID]!)
         
         cell.tag = dish.ID

@@ -10,14 +10,18 @@ import UIKit
 
 class DishTableViewController: UITableViewController {
     
+    @IBOutlet weak var restaurantPhoto: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        restaurantPhoto.image = UIImage(named: "no_image_available.png")
         
         FeedMe.Variable.images = [String: UIImage]()
         FeedMe.Variable.order = Order(userID: FeedMe.Variable.userID, restaurantID: FeedMe.Variable.restaurantID!)
         FeedMe.Variable.dishes = [Dish]()
         
-        let bgImage = UIImage(named:"background.png")
+        let bgImage = UIImage(named: "background.png")
         let imageView = UIImageView(frame: self.view.bounds)
         imageView.image = bgImage
         self.tableView.backgroundView = imageView
