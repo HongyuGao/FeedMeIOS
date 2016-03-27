@@ -20,15 +20,7 @@ class DishTableViewController: UITableViewController {
         let bgImage = UIImage(named:"background.png")
         let imageView = UIImageView(frame: self.view.bounds)
         imageView.image = bgImage
-        
-        self.tableView.backgroundView = imageView 
- 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
+        self.tableView.backgroundView = imageView
         navigationItem.title = FeedMe.Variable.restaurantName
         
         loadAllDishes(FeedMe.Path.TEXT_HOST + "dishes/query/?shopId=" + String(FeedMe.Variable.restaurantID!))

@@ -82,19 +82,28 @@ class Order {
     
     // Remove dish from the order.
     func removeDish(dishID: Int, qty: Int = 1) {
+        totalItems -= qty
+        totalPrice -= Double(id2dish[dishID]!.price!) * Double(qty)
+        
         id2count[dishID] = id2count[dishID]! - qty
         if id2count[dishID] == 0 {
             id2dish.removeValueForKey(dishID)
             id2count.removeValueForKey(dishID)
         }
-        
-        totalItems -= qty
-        totalPrice -= Double(id2dish[dishID]!.price!) * Double(qty)
     }
     
     // Check if the order is empty.
     func isEmptyOrder() -> Bool {
         return self.totalPrice == 0
+    }
+    
+    // Return the list of all dishes.
+    func dishesList() -> [Dish] {
+        var dishesList = [Dish]()
+        for (_, dish) in id2dish {
+            dishesList += [dish]
+        }
+        return dishesList
     }
 
 }
