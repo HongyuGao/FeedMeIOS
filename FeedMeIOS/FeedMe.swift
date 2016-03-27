@@ -16,12 +16,13 @@ struct FeedMe {
     }
     
     struct Variable {
-        static var userID: Int?
+        static var userID: String?
         static var restaurantID: Int?
         static var restaurantName: String?
         static var dishID: Int?
         static var images: [String: UIImage]?
         static var order: Order?
+        static var dishes: [Dish]?
     }
         
 }

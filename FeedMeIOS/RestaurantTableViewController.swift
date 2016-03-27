@@ -15,11 +15,10 @@ class RestaurantTableViewController: UITableViewController {
 
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()   
         
         // Initialization:
         FeedMe.Variable.images = [String: UIImage]()
-//        FeedMe.Variable.order = Order(userID: nil, restaurantID: <#T##Int#>, time: <#T##String#>, deliveryAddress: <#T##String?#>, phone: <#T##String?#>, dishes: <#T##[Dish]#>, dish2count: <#T##Dictionary<Int, Int>#>)
         
         let bgImage = UIImage(named:"background.png")
         let imageView = UIImageView(frame: self.view.bounds)

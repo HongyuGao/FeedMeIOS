@@ -28,9 +28,10 @@ class DishTableViewCell: UITableViewCell {
     }
 
     @IBAction func addToShoppingCart(sender: UIButton) {
-        print(FeedMe.Variable.dishID)
-        print(addToShoppingCart.tag)
-        // MAKR: TODO!
+        FeedMe.Variable.order!.addDish(FeedMe.Variable.dishes![addToShoppingCart.tag])
+        print("Add to cart: \(FeedMe.Variable.dishes![addToShoppingCart.tag].name!)")
+        print("Total price is now: \(FeedMe.Variable.order!.totalPrice)")
+        print("Total count is now: \(FeedMe.Variable.order!.totalItems)")
     }
     
 }
