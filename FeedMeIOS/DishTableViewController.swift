@@ -156,9 +156,22 @@ class DishTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let dish = FeedMe.Variable.dishes![indexPath.row]
         
+        
         cell.nameLabel.text = dish.name!
         cell.photoImageView.image = dish.photo
+        
+        cell.photoImageView.layer.cornerRadius = 10.0
+        cell.photoImageView.layer.borderWidth = 0.0
+        cell.photoImageView.clipsToBounds = true
+//        cell.photoImageView.layer.borderColor = UIColor(red: 255/225, green: 255/255, blue: 255/255, alpha: 1).CGColor
+       
+
+        
         cell.addToShoppingCart.tag = indexPath.row
+        cell.addToShoppingCart.layer.borderWidth = 0
+        cell.addToShoppingCart.layer.cornerRadius = 6.0
+//        cell.addToShoppingCart.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 1).CGColor
+
         
         cell.photoImageView.layer.cornerRadius = 10.0
         cell.photoImageView.layer.borderWidth = 0.0
