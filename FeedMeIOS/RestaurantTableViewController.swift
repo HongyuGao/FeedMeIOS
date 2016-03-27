@@ -166,11 +166,11 @@ class RestaurantTableViewController: UITableViewController {
         cell.photoImageView.layer.borderWidth = 2.0
         cell.photoImageView.clipsToBounds = true
         if((indexPath.row)%2 == 0) {
-            cell.backgroundColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.1)
-            cell.photoImageView.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.1).CGColor
+            cell.backgroundColor = UIColor(red: 255/225, green: 255/255, blue: 255/255, alpha: 0.4)
+            cell.photoImageView.layer.borderColor = UIColor(red: 255/225, green: 255/255, blue: 255/255, alpha: 0.4).CGColor
         } else {
-            cell.backgroundColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.0)
-            cell.photoImageView.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.0).CGColor
+            cell.backgroundColor = UIColor(red: 255/225, green: 255/255, blue: 255/255, alpha: 0.7)
+            cell.photoImageView.layer.borderColor = UIColor(red: 255/225, green: 255/255, blue: 255/255, alpha: 0.7).CGColor
         }
         
         if restaurant.openTimeMorning != nil && restaurant.openTimeAfternoon != nil {
