@@ -8,24 +8,49 @@
 
 import UIKit
 
-class OrderTableViewController: UITableViewController {
+class OrderTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var totalPrice: UILabel!
-
+    @IBOutlet weak var deliveryFeeLabel: UILabel!
+    @IBOutlet weak var totalFeeLabel: UILabel!
+    @IBOutlet weak var deliveryAddressLabel: UILabel!
+    
     override func viewDidLoad() {
-        super.viewDidLoad() 
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        super.viewDidLoad()
         
-        totalPrice.text = "$" + String(format: "%.2f", FeedMe.Variable.order!.totalPrice)
+        if FeedMe.Variable.order != nil {
+            totalPrice.text = "$" + String(format: "%.2f", FeedMe.Variable.order!.totalPrice)
+        } else {
+            totalPrice.text = "$" + String(format: "%.2f", 0)
+        }
+        
+        FeedMe.Variable.selectedDeliveryAddress = User().defaultDeliveryAddress!
+        FeedMe.Variable.selectedDeliveryAddress.setAsSelected()
+        deliveryAddressLabel.text = FeedMe.Variable.selectedDeliveryAddress.toSimpleAddressString()
+        updateGrandTotalFee()
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        self.deliveryAddressLabel.text = FeedMe.Variable.selectedDeliveryAddress.toSimpleAddressString()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    func updateGrandTotalFee() {
+        var grandTotalString = deliveryFeeLabel.text!
+        grandTotalString.removeAtIndex(grandTotalString.startIndex)
+        let grandTotal = FeedMe.Variable.order!.totalPrice + Double(grandTotalString)!
+        totalFeeLabel.text = "$" + String(format: "%.2f", grandTotal)
+    }
+    
+    
+    @IBAction func newAddressBtnClicked(sender: UIButton) {
+        
+
     }
     
     
@@ -35,6 +60,7 @@ class OrderTableViewController: UITableViewController {
         FeedMe.Variable.order!.addDish(FeedMe.Variable.order!.id2dish[cell.tag]!, qty: 1)
         cell.dishQtyLabel.text = String(Int(cell.dishQtyLabel.text!)! + 1)
         totalPrice.text = "$" + String(format: "%.2f", FeedMe.Variable.order!.totalPrice)
+        updateGrandTotalFee()
     }
     
     @IBAction func decreaseBtn(sender: UIButton) {
@@ -47,6 +73,7 @@ class OrderTableViewController: UITableViewController {
             cell.dishQtyLabel.text = String(newQty)
         }
         totalPrice.text = "$" + String(format: "%.2f", FeedMe.Variable.order!.totalPrice)
+        updateGrandTotalFee()
     }
     
 
