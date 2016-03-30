@@ -15,13 +15,16 @@ class AddressTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadAddresses()
+    }
+    
+    /**
+        To be changed.
+        */
+    func loadAddresses() {
         // Construct some test data:
         // MARK: change this to load data from remote database:
         defaultDeliveryAddress = Address(userName: "CSIT", addressLine1: "108 N Rd", addressLine2: "Acton", postcode: "2601", phone: "(02) 6125 5111", suburb: "Canberra", state: "ACT", selected: true)
-        
-        // FeedMe.Variable.selectedDeliveryAddress = defaultDeliveryAddress!
-        // FeedMe.Variable.selectedDeliveryAddress.setAsSelected()
         
         let otherAddress1 = Address(userName: "Jason", addressLine1: "109 N Rd", addressLine2: "Acton", postcode: "2601", phone: "(02) 6125 5111", suburb: "Canberra", state: "ACT", selected: false)
         let otherAddress2 = Address(userName: "Jun Chen", addressLine1: "110 N Rd", addressLine2: "Acton", postcode: "2601", phone: "(02) 6125 5111", suburb: "Canberra", state: "ACT", selected: false)
@@ -29,6 +32,7 @@ class AddressTableViewController: UITableViewController {
         otherDeliveryAddresses += [otherAddress2]
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -55,7 +59,7 @@ class AddressTableViewController: UITableViewController {
         let cellIdentifier = "AddressTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! AddressTableViewCell
     
-        // fetch the data entry:
+        // Fetch the data entry:
         var address: Address?
         switch indexPath.section {
         case 0:
@@ -114,6 +118,18 @@ class AddressTableViewController: UITableViewController {
     }
     
     
+    @IBAction func unwindToAddressList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? NewAddressViewController, address = sourceViewController.address {
+            let newIndexPath = NSIndexPath(forRow: otherDeliveryAddresses.count, inSection: 1)
+            otherDeliveryAddresses.append(address)
+            FeedMe.Variable.selectedDeliveryAddress.setAsDeselected()
+            FeedMe.Variable.selectedDeliveryAddress = address
+            FeedMe.Variable.selectedDeliveryAddress.setAsSelected()
+            self.tableView.beginUpdates()
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            self.tableView.endUpdates()
+        }
+    }
     
 
     /*
