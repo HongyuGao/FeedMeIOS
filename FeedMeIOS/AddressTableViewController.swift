@@ -26,8 +26,8 @@ class AddressTableViewController: UITableViewController {
         // MARK: change this to load data from remote database:
         defaultDeliveryAddress = Address(userName: "CSIT", addressLine1: "108 N Rd", addressLine2: "Acton", postcode: "2601", phone: "(02) 6125 5111", suburb: "Canberra", state: "ACT", selected: true)
         
-        let otherAddress1 = Address(userName: "Jason", addressLine1: "109 N Rd", addressLine2: "Acton", postcode: "2601", phone: "(02) 6125 5111", suburb: "Canberra", state: "ACT", selected: false)
-        let otherAddress2 = Address(userName: "Jun Chen", addressLine1: "110 N Rd", addressLine2: "Acton", postcode: "2601", phone: "(02) 6125 5111", suburb: "Canberra", state: "ACT", selected: false)
+        let otherAddress1 = Address(userName: "Jason", addressLine1: "37 Chandler St", addressLine2: "Belconnen", postcode: "2617", phone: "(04) 1635 4917", suburb: "Canberra", state: "ACT", selected: false)
+        let otherAddress2 = Address(userName: "Jun Chen", addressLine1: "4 Eady St", addressLine2: "Dickson", postcode: "2602", phone: "(04) 1635 4917", suburb: "Canberra", state: "ACT", selected: false)
         otherDeliveryAddresses += [otherAddress1]
         otherDeliveryAddresses += [otherAddress2]
     }
