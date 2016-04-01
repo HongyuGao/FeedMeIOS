@@ -10,6 +10,7 @@
 		44308C491CA20DB8003E7BB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44308C481CA20DB8003E7BB4 /* Assets.xcassets */; };
 		961C2E221CA6197700C562F8 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C2E211CA6197700C562F8 /* OrderTableViewCell.swift */; };
 		961C2E241CA6199500C562F8 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C2E231CA6199500C562F8 /* OrderTableViewController.swift */; };
+		96292DB01CAE204F0027D5DC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96292DAF1CAE204F0027D5DC /* SWRevealViewController.m */; };
 		962C5CF01CAB7E010009CBF3 /* SSRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962C5CEE1CAB7E010009CBF3 /* SSRadioButton.swift */; };
 		962C5CF11CAB7E010009CBF3 /* SSRadioButtonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962C5CEF1CAB7E010009CBF3 /* SSRadioButtonsController.swift */; };
 		962C5CF31CAB7E230009CBF3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 962C5CF21CAB7E230009CBF3 /* LICENSE */; };
@@ -57,6 +58,9 @@
 		44308C481CA20DB8003E7BB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		961C2E211CA6197700C562F8 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		961C2E231CA6199500C562F8 /* OrderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
+		96292DAD1CAE204E0027D5DC /* FeedMeIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedMeIOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		96292DAE1CAE204F0027D5DC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		96292DAF1CAE204F0027D5DC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		962C5CEE1CAB7E010009CBF3 /* SSRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButton.swift; sourceTree = "<group>"; };
 		962C5CEF1CAB7E010009CBF3 /* SSRadioButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButtonsController.swift; sourceTree = "<group>"; };
 		962C5CF21CAB7E230009CBF3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 		96CFC4F91C87FF2A0086F4EF /* FeedMeIOS */ = {
 			isa = PBXGroup;
 			children = (
+				96292DAE1CAE204F0027D5DC /* SWRevealViewController.h */,
+				96292DAF1CAE204F0027D5DC /* SWRevealViewController.m */,
 				96CFC4FA1C87FF2A0086F4EF /* AppDelegate.swift */,
 				96EF93071CA90391002C6623 /* User.swift */,
 				96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */,
@@ -167,6 +173,7 @@
 				96CFC4FE1C87FF2A0086F4EF /* Main.storyboard */,
 				96CFC5031C87FF2A0086F4EF /* LaunchScreen.storyboard */,
 				96CFC5061C87FF2A0086F4EF /* Info.plist */,
+				96292DAD1CAE204E0027D5DC /* FeedMeIOS-Bridging-Header.h */,
 			);
 			path = FeedMeIOS;
 			sourceTree = "<group>";
@@ -251,7 +258,7 @@
 		96CFC4EF1C87FF2A0086F4EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = FeedMe;
 				TargetAttributes = {
@@ -324,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96D5D8981C9D00540049FC9D /* DishTableViewCell.swift in Sources */,
+				96292DB01CAE204F0027D5DC /* SWRevealViewController.m in Sources */,
 				96EF93161CA91831002C6623 /* AddressTableViewController.swift in Sources */,
 				963C16B11C9905AB006C534E /* Restaurant.swift in Sources */,
 				96EF930C1CA916B1002C6623 /* Address.swift in Sources */,
@@ -482,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FeedMeIOS/Info.plist;
@@ -489,6 +498,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = FeedMe.FeedMeIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FeedMeIOS/FeedMeIOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -496,6 +507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FeedMeIOS/Info.plist;
@@ -503,6 +515,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = FeedMe.FeedMeIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FeedMeIOS/FeedMeIOS-Bridging-Header.h";
 			};
 			name = Release;
 		};
