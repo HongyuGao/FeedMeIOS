@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		44308C491CA20DB8003E7BB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44308C481CA20DB8003E7BB4 /* Assets.xcassets */; };
+		961606F21CB119930079183B /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 961606F11CB119930079183B /* LICENSE.txt */; };
+		961606F41CB11AD40079183B /* HistoryOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961606F31CB11AD40079183B /* HistoryOrders.swift */; };
+		961606F61CB11AF50079183B /* HistoryOrdersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961606F51CB11AF50079183B /* HistoryOrdersTableViewCell.swift */; };
+		961606F81CB11B100079183B /* HistoryOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961606F71CB11B100079183B /* HistoryOrdersTableViewController.swift */; };
 		961C2E221CA6197700C562F8 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C2E211CA6197700C562F8 /* OrderTableViewCell.swift */; };
 		961C2E241CA6199500C562F8 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C2E231CA6199500C562F8 /* OrderTableViewController.swift */; };
 		96292DB01CAE204F0027D5DC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96292DAF1CAE204F0027D5DC /* SWRevealViewController.m */; };
@@ -56,11 +60,15 @@
 
 /* Begin PBXFileReference section */
 		44308C481CA20DB8003E7BB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		961606F11CB119930079183B /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		961606F31CB11AD40079183B /* HistoryOrders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrders.swift; sourceTree = "<group>"; };
+		961606F51CB11AF50079183B /* HistoryOrdersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrdersTableViewCell.swift; sourceTree = "<group>"; };
+		961606F71CB11B100079183B /* HistoryOrdersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrdersTableViewController.swift; sourceTree = "<group>"; };
 		961C2E211CA6197700C562F8 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		961C2E231CA6199500C562F8 /* OrderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
-		96292DAD1CAE204E0027D5DC /* FeedMeIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedMeIOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		96292DAE1CAE204F0027D5DC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		96292DAF1CAE204F0027D5DC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		96292DAD1CAE204E0027D5DC /* FeedMeIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FeedMeIOS-Bridging-Header.h"; path = "FeedMeIOS/FeedMeIOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		96292DAE1CAE204F0027D5DC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = FeedMeIOS/SWRevealViewController.h; sourceTree = "<group>"; };
+		96292DAF1CAE204F0027D5DC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = FeedMeIOS/SWRevealViewController.m; sourceTree = "<group>"; };
 		962C5CEE1CAB7E010009CBF3 /* SSRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButton.swift; sourceTree = "<group>"; };
 		962C5CEF1CAB7E010009CBF3 /* SSRadioButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSRadioButtonsController.swift; sourceTree = "<group>"; };
 		962C5CF21CAB7E230009CBF3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -80,11 +88,11 @@
 		96CFC5161C87FF2A0086F4EF /* FeedMeIOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedMeIOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96CFC51A1C87FF2A0086F4EF /* FeedMeIOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMeIOSUITests.swift; sourceTree = "<group>"; };
 		96CFC51C1C87FF2A0086F4EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedMe.swift; sourceTree = "<group>"; };
+		96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedMe.swift; path = FeedMeIOS/FeedMe.swift; sourceTree = "<group>"; };
 		96D5D8911C9CF9F70049FC9D /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		96D5D8971C9D00540049FC9D /* DishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishTableViewCell.swift; sourceTree = "<group>"; };
 		96D5D8991C9D009C0049FC9D /* DishTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishTableViewController.swift; sourceTree = "<group>"; };
-		96EF93071CA90391002C6623 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		96EF93071CA90391002C6623 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = FeedMeIOS/User.swift; sourceTree = "<group>"; };
 		96EF930B1CA916B1002C6623 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		96EF93131CA91821002C6623 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		96EF93151CA91831002C6623 /* AddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressTableViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +124,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		961606ED1CB117E90079183B /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				961606F31CB11AD40079183B /* HistoryOrders.swift */,
+				961606F51CB11AF50079183B /* HistoryOrdersTableViewCell.swift */,
+				961606F71CB11B100079183B /* HistoryOrdersTableViewController.swift */,
+			);
+			name = Orders;
+			sourceTree = "<group>";
+		};
+		961606EE1CB118080079183B /* User */ = {
+			isa = PBXGroup;
+			children = (
+				96EF93071CA90391002C6623 /* User.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		961606EF1CB118530079183B /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
+		961606F01CB118820079183B /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				961606F11CB119930079183B /* LICENSE.txt */,
+				96292DAE1CAE204F0027D5DC /* SWRevealViewController.h */,
+				96292DAF1CAE204F0027D5DC /* SWRevealViewController.m */,
+				96292DAD1CAE204E0027D5DC /* FeedMeIOS-Bridging-Header.h */,
+			);
+			name = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		962C5CED1CAB7DD00009CBF3 /* SSRadioButtonController */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,7 +174,11 @@
 		96CFC4EE1C87FF2A0086F4EF = {
 			isa = PBXGroup;
 			children = (
+				961606EF1CB118530079183B /* Global */,
 				962C5CED1CAB7DD00009CBF3 /* SSRadioButtonController */,
+				961606F01CB118820079183B /* SWRevealViewController */,
+				961606EE1CB118080079183B /* User */,
+				961606ED1CB117E90079183B /* Orders */,
 				96CFC4F91C87FF2A0086F4EF /* FeedMeIOS */,
 				96CFC50E1C87FF2A0086F4EF /* FeedMeIOSTests */,
 				96CFC5191C87FF2A0086F4EF /* FeedMeIOSUITests */,
@@ -150,11 +199,7 @@
 		96CFC4F91C87FF2A0086F4EF /* FeedMeIOS */ = {
 			isa = PBXGroup;
 			children = (
-				96292DAE1CAE204F0027D5DC /* SWRevealViewController.h */,
-				96292DAF1CAE204F0027D5DC /* SWRevealViewController.m */,
 				96CFC4FA1C87FF2A0086F4EF /* AppDelegate.swift */,
-				96EF93071CA90391002C6623 /* User.swift */,
-				96D5D88F1C9CD4CB0049FC9D /* FeedMe.swift */,
 				96EF930B1CA916B1002C6623 /* Address.swift */,
 				96EF93131CA91821002C6623 /* AddressTableViewCell.swift */,
 				96EF93151CA91831002C6623 /* AddressTableViewController.swift */,
@@ -173,7 +218,6 @@
 				96CFC4FE1C87FF2A0086F4EF /* Main.storyboard */,
 				96CFC5031C87FF2A0086F4EF /* LaunchScreen.storyboard */,
 				96CFC5061C87FF2A0086F4EF /* Info.plist */,
-				96292DAD1CAE204E0027D5DC /* FeedMeIOS-Bridging-Header.h */,
 			);
 			path = FeedMeIOS;
 			sourceTree = "<group>";
@@ -301,6 +345,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961606F21CB119930079183B /* LICENSE.txt in Resources */,
 				96CFC5051C87FF2A0086F4EF /* LaunchScreen.storyboard in Resources */,
 				96A855121CA4F1B900B275AC /* background.png in Resources */,
 				44308C491CA20DB8003E7BB4 /* Assets.xcassets in Resources */,
@@ -333,8 +378,11 @@
 				96D5D8981C9D00540049FC9D /* DishTableViewCell.swift in Sources */,
 				96292DB01CAE204F0027D5DC /* SWRevealViewController.m in Sources */,
 				96EF93161CA91831002C6623 /* AddressTableViewController.swift in Sources */,
+				961606F61CB11AF50079183B /* HistoryOrdersTableViewCell.swift in Sources */,
+				961606F41CB11AD40079183B /* HistoryOrders.swift in Sources */,
 				963C16B11C9905AB006C534E /* Restaurant.swift in Sources */,
 				96EF930C1CA916B1002C6623 /* Address.swift in Sources */,
+				961606F81CB11B100079183B /* HistoryOrdersTableViewController.swift in Sources */,
 				962C5CF11CAB7E010009CBF3 /* SSRadioButtonsController.swift in Sources */,
 				963C16AD1C98FFEC006C534E /* RestaurantTableViewCell.swift in Sources */,
 				964137061CABED9D0028C158 /* NewAddressViewController.swift in Sources */,

@@ -41,25 +41,6 @@
             </objects>
             <point key="canvasLocation" x="-739" y="-329"/>
         </scene>
-        <!--Order-->
-        <scene sceneID="1Oz-BK-GIw">
-            <objects>
-                <viewController id="gXK-7N-Smw" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bcN-Cd-3dL"/>
-                        <viewControllerLayoutGuide type="bottom" id="D81-Ga-IOt"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Z5X-ew-zwz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.026156651789999999" green="0.78487646069999994" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Order" id="t7Z-Yh-iWe"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UfJ-EO-xRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-739" y="-987"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Aga-sV-gdf">
             <objects>
@@ -648,11 +629,11 @@
             </objects>
             <point key="canvasLocation" x="-1834" y="240"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Orders-->
         <scene sceneID="9i5-YW-v6d">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bqO-G9-eLe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="history" id="y1a-Kg-AHk"/>
+                    <tabBarItem key="tabBarItem" title="Orders" image="ic_list" id="y1a-Kg-AHk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jnx-uQ-bYR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -660,18 +641,47 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="gXK-7N-Smw" kind="relationship" relationship="rootViewController" id="BKe-7Y-ecI"/>
+                        <segue destination="oPR-zt-QCY" kind="relationship" relationship="rootViewController" id="xK5-zm-OsP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPi-PI-3ML" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1271" y="-987"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--History Orders Table View Controller-->
+        <scene sceneID="NKw-eK-fl3">
+            <objects>
+                <tableViewController id="oPR-zt-QCY" customClass="HistoryOrdersTableViewController" customModule="FeedMeIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5PQ-rd-3hK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryOrdersTableViewCell" id="g85-Bv-xIY" customClass="HistoryOrdersTableViewCell" customModule="FeedMeIOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g85-Bv-xIY" id="OD9-5h-hk8">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="oPR-zt-QCY" id="i3D-TL-QJK"/>
+                            <outlet property="delegate" destination="oPR-zt-QCY" id="zIl-MT-14C"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="gvb-3h-s7I"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rdf-xS-mO2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-739" y="-987"/>
+        </scene>
+        <!--Me-->
         <scene sceneID="giV-zA-rkT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GGk-K7-Pkl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="Urc-9g-1sq"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="ic_account_box" id="Urc-9g-1sq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dop-gN-aYx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -707,6 +717,8 @@
     </scenes>
     <resources>
         <image name="Logo" width="1072" height="260"/>
+        <image name="ic_account_box" width="24" height="24"/>
+        <image name="ic_list" width="24" height="24"/>
         <image name="shopping_cart" width="24" height="24"/>
     </resources>
 </document>
