@@ -648,22 +648,76 @@
             </objects>
             <point key="canvasLocation" x="-1271" y="-987"/>
         </scene>
-        <!--History Orders Table View Controller-->
+        <!--Your Orders-->
         <scene sceneID="NKw-eK-fl3">
             <objects>
                 <tableViewController id="oPR-zt-QCY" customClass="HistoryOrdersTableViewController" customModule="FeedMeIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5PQ-rd-3hK">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="190" sectionHeaderHeight="28" sectionFooterHeight="28" id="5PQ-rd-3hK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search your history orders..." id="UIY-s7-Ued">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="oPR-zt-QCY" id="w62-BD-BAF"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryOrdersTableViewCell" id="g85-Bv-xIY" customClass="HistoryOrdersTableViewCell" customModule="FeedMeIOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="HistoryOrdersTableViewCell" rowHeight="190" id="g85-Bv-xIY" customClass="HistoryOrdersTableViewCell" customModule="FeedMeIOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="320" height="190"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g85-Bv-xIY" id="OD9-5h-hk8">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="189"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order state:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDM-bQ-UNz">
+                                            <rect key="frame" x="8" y="8" width="271" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTq-un-l62">
+                                            <rect key="frame" x="8" y="37" width="271" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Grand-total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TA0-LB-zVu">
+                                            <rect key="frame" x="8" y="124" width="271" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sub-total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qr3-jf-xBI">
+                                            <rect key="frame" x="8" y="66" width="271" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Order date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezb-ua-OLW">
+                                            <rect key="frame" x="8" y="153" width="271" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delivery fee:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdq-j5-HS1">
+                                            <rect key="frame" x="8" y="95" width="271" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="DeliveryFeeLabel" destination="bdq-j5-HS1" id="97w-Wo-Icw"/>
+                                    <outlet property="GrandTotalLabel" destination="TA0-LB-zVu" id="hEA-Bs-iTq"/>
+                                    <outlet property="OrderDateLabel" destination="ezb-ua-OLW" id="b2w-U1-Bff"/>
+                                    <outlet property="OrderStateLabel" destination="YDM-bQ-UNz" id="rVC-rb-ufM"/>
+                                    <outlet property="RestaurantLabel" destination="vTq-un-l62" id="44s-6g-6n4"/>
+                                    <outlet property="SubTotalLabel" destination="Qr3-jf-xBI" id="msZ-ab-ZWZ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -671,9 +725,21 @@
                             <outlet property="delegate" destination="oPR-zt-QCY" id="zIl-MT-14C"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gvb-3h-s7I"/>
+                    <navigationItem key="navigationItem" title="Your Orders" id="gvb-3h-s7I"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="tBY-18-1vs" id="uY4-23-30v"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdf-xS-mO2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="tBY-18-1vs">
+                    <connections>
+                        <outlet property="delegate" destination="oPR-zt-QCY" id="pw5-u7-2xX"/>
+                        <outlet property="searchBar" destination="UIY-s7-Ued" id="n8Z-O6-QgN"/>
+                        <outlet property="searchContentsController" destination="oPR-zt-QCY" id="zZO-Ul-uBR"/>
+                        <outlet property="searchResultsDataSource" destination="oPR-zt-QCY" id="DmQ-SC-UAI"/>
+                        <outlet property="searchResultsDelegate" destination="oPR-zt-QCY" id="dAh-EW-f8w"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-739" y="-987"/>
         </scene>

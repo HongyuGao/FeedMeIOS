@@ -10,6 +10,13 @@ import UIKit
 
 class HistoryOrdersTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var OrderStateLabel: UILabel!
+    @IBOutlet weak var RestaurantLabel: UILabel!
+    @IBOutlet weak var SubTotalLabel: UILabel!
+    @IBOutlet weak var DeliveryFeeLabel: UILabel!
+    @IBOutlet weak var GrandTotalLabel: UILabel!
+    @IBOutlet weak var OrderDateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

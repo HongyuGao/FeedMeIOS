@@ -7,3 +7,35 @@
 //
 
 import Foundation 
+
+class HistoryOrders {
+    
+    var currentOrders: [Order]?
+    var pastOrders: [Order]?
+    
+    init() {
+
+    }
+    
+    init(currentOrders: [Order]?, pastOrders: [Order]?) {
+        self.currentOrders = currentOrders
+        self.pastOrders = pastOrders
+    }
+    
+    func setCurrentOrders(currentOrders: [Order]?) {
+        self.currentOrders = currentOrders
+    }
+    
+    func getCurrentOrders() -> [Order]? {
+        return self.currentOrders
+    }
+    
+    func setPastOrders(pastOrders: [Order]?) {
+        self.pastOrders = pastOrders
+    }
+    
+    func getPastOrders() -> [Order]? {
+        return self.pastOrders
+    }
+    
+}
