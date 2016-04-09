@@ -16,12 +16,22 @@ struct FeedMe {
     }
     
     struct Variable {
-        static var userID: Int?
+        static var userID: String?
         static var restaurantID: Int?
         static var restaurantName: String?
         static var dishID: Int?
         static var images: [String: UIImage]?
         static var order: Order?
+        static var dishes: [Int: Dish]!
+        static var selectedDeliveryAddress: Address!
     }
         
+}
+
+enum DishType: String {
+    case Staple = "Staple"
+    case Soup = "Soup"
+    case Dessert = "Dessert"
+    case Drinks = "Drinks"
+    case Others = "Others"
 }

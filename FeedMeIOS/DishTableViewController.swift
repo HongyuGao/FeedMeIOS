@@ -10,44 +10,50 @@ import UIKit
 
 class DishTableViewController: UITableViewController {
     
-    // MARK: Properties
-    var dishes = [Dish]()
+    @IBOutlet weak var restaurantPhoto: UIImageView!
+    @IBOutlet weak var cartIcon: UIBarButtonItem!
     
-
+    // MARK: dishes stored according to their types.
+    var staple = [Dish]()
+    var soup = [Dish]()
+    var dessert = [Dish]()
+    var drinks = [Dish]()
+    var others = [Dish]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FeedMe.Variable.images = [String: UIImage]()
+        restaurantPhoto.image = UIImage(named: "no_image_available.png")
         
-        let bgImage = UIImage(named:"background.png")
+        FeedMe.Variable.images = [String: UIImage]()
+        FeedMe.Variable.order = Order(userID: FeedMe.Variable.userID, restaurantID: FeedMe.Variable.restaurantID!)
+        FeedMe.Variable.dishes = [Int: Dish]()
+        
+        let bgImage = UIImage(named: "background.png")
         let imageView = UIImageView(frame: self.view.bounds)
         imageView.image = bgImage
-        
         self.tableView.backgroundView = imageView
-        
-//        self.view.addSubview(imageView)
-//        self.view.sendSubviewToBack(imageView)
-        
-//        let nav = self.navigationController?.navigationBar
-//        nav?.barStyle = UIBarStyle.Black
-//        nav?.tintColor = UIColor.whiteColor()
-//        nav?.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-//        self.navigationController?.navigationBar.tintColor = UIColor(red:255/255,green:255/255,blue:255/255, alpha:1.0)
-
-        
- 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         navigationItem.title = FeedMe.Variable.restaurantName
         
-        
-        
-        
         loadAllDishes(FeedMe.Path.TEXT_HOST + "dishes/query/?shopId=" + String(FeedMe.Variable.restaurantID!))
+    }
+    
+    @IBAction func backToRestList(sender: UIBarButtonItem) {
+        if FeedMe.Variable.order!.isEmptyOrder() {
+           self.navigationController?.popViewControllerAnimated(true)
+        } else {
+            let alert = UIAlertController(title: "Tips", message: "Change to another restaurant will empty your current shopping cart, are you sure?", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default) { (ACTION) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil)
+            
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     func loadAllDishes(urlString: String) {
@@ -100,14 +106,34 @@ class DishTableViewController: UITableViewController {
                         }
                     }
 
-                    dishes += [dish]
+                    FeedMe.Variable.dishes[dish.ID] = dish
+                    
+                    switch dish.type! {
+                    case DishType.Staple.rawValue:
+                        staple += [dish]
+                    case DishType.Soup.rawValue:
+                        soup += [dish]
+                    case DishType.Dessert.rawValue:
+                        dessert += [dish]
+                    case  DishType.Drinks.rawValue:
+                        drinks += [dish]
+                    default:
+                        others += [dish]
+                    }
+                    
                 }
             }
+            
+            staple.sortInPlace({$0.name! < $1.name!})
+            soup.sortInPlace({$0.name! < $1.name!})
+            dessert.sortInPlace({$0.name! < $1.name!})
+            drinks.sortInPlace({$0.name! < $1.name!})
+            others.sortInPlace({$0.name! < $1.name!})
             
             do_table_refresh()
             
         } catch _ {
-            
+
         }
     }
     
@@ -142,47 +168,108 @@ class DishTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 5
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dishes.count
+        switch section {
+        case 0:
+            return staple.count
+        case 1:
+            return soup.count
+        case 2:
+            return dessert.count
+        case 3:
+            return drinks.count
+        case 4:
+            return others.count
+        default:
+            return 0
+        }
     }
 
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "DishTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! DishTableViewCell
         
-        // Fetches the appropriate meal for the data source layout.
-        let dish = dishes[indexPath.row]
+        var dish: Dish!
+        switch indexPath.section {
+        case 0:
+            dish = staple[indexPath.row]
+        case 1:
+            dish = soup[indexPath.row]
+        case 2:
+            dish = dessert[indexPath.row]
+        case 3:
+            dish = drinks[indexPath.row]
+        case 4:
+            dish = others[indexPath.row]
+        default:
+            break
+        }
         
         cell.nameLabel.text = dish.name!
         cell.photoImageView.image = dish.photo
-        cell.addToShoppingCart.tag = indexPath.row
         
+        cell.photoImageView.layer.cornerRadius = 10.0
+        cell.photoImageView.layer.borderWidth = 0.0
+        cell.photoImageView.clipsToBounds = true
         
+        cell.addToShoppingCart.tag = dish.ID
+        cell.addToShoppingCart.layer.borderWidth = 0
+        cell.addToShoppingCart.layer.cornerRadius = 6.0
         
         cell.photoImageView.layer.cornerRadius = 10.0
         cell.photoImageView.layer.borderWidth = 0.0
         cell.photoImageView.clipsToBounds = true
         cell.backgroundColor = UIColor(red: 255/225, green: 255/255, blue: 255/255, alpha: 0.6)
-//        if((indexPath.row)%2 == 0) {
-//            cell.backgroundColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.6)
-//            cell.photoImageView.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.6).CGColor
-//        } else {
-//            cell.backgroundColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.5)
-//            cell.photoImageView.layer.borderColor = UIColor(red: 194/225, green: 45/255, blue: 36/255, alpha: 0.5).CGColor
-//        }
-        
         
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let dish = dishes[indexPath.row]
-        FeedMe.Variable.dishID = dish.ID
+        switch indexPath.section {
+        case 0:
+            FeedMe.Variable.dishID = staple[indexPath.row].ID
+        case 1:
+            FeedMe.Variable.dishID = soup[indexPath.row].ID
+        case 2:
+            FeedMe.Variable.dishID = dessert[indexPath.row].ID
+        case 3:
+            FeedMe.Variable.dishID = drinks[indexPath.row].ID
+        case 4:
+            FeedMe.Variable.dishID = others[indexPath.row].ID
+        default:
+            break
+        }
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return DishType.Staple.rawValue + " ( " + String(staple.count) + " )"
+        case 1:
+            return DishType.Soup.rawValue + " ( " + String(soup.count) + " )"
+        case 2:
+            return DishType.Dessert.rawValue + " ( " + String(dessert.count) + " )"
+        case 3:
+            return DishType.Drinks.rawValue + " ( " + String(drinks.count) + " )"
+        case 4:
+            return DishType.Others.rawValue + " ( " + String(others.count) + " )"
+        default:
+            return "Unclassfied"
+        }
+    }
+    
+    
+    // Configure the header view.
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UITableViewHeaderFooterView()
+        
+        // MARK: TO BE CHANGED!
+        // headerView.backgroundColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        
+        return headerView
     }
 
 
